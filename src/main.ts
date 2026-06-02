@@ -5,6 +5,8 @@ import {
   DRACOLoader,
   GLTFLoader,
   OrbitControls,
+  RectAreaLightHelper,
+  RectAreaLightUniformsLib,
   Reflector,
 } from "three/examples/jsm/Addons.js";
 import { Tab } from "three/examples/jsm/inspector/ui/Tab.js";
@@ -34,6 +36,8 @@ const pane = new Pane();
 
 canvas.width = innerWidth;
 canvas.height = innerHeight;
+
+RectAreaLightUniformsLib.init();
 
 const scene = new THREE.Scene();
 
@@ -83,6 +87,10 @@ pane.addBinding(PanelMaterial, "emissiveIntensity", {
   max: 10,
 });
 
+let uflMixer = null;
+
+// anim.clipAction()
+
 GLB.load("/models/ufl-panels.glb", (glb) => {
   const panels = glb.scene;
 
@@ -98,25 +106,32 @@ GLB.load("/models/ufl-panels.glb", (glb) => {
 });
 GLB.load("/models/ufl.glb", (glb) => {
   const ufl = glb.scene;
+  uflMixer = new THREE.AnimationMixer(ufl);
+  const action = uflMixer.clipAction(glb.animations[0]);
+
+  ufl.traverse(n => {
+    n.material = new THREE.MeshBasicMaterial({
+      color:0x000000,
+      // roughness:1,
+      // metalness:0
+    })
+  })
+
+  action.play();
   scene.add(ufl);
-  ufl.traverse((node) => {
-    if (node.isMesh) {
-      // node.material = new THREE.MeshBasicMaterial({
-      //   color: "red",
-      // });
-    }
-  });
 });
 
 const NormalMap = Tex.load("/textures/normal-map.jpg");
 
+NormalMap.colorSpace = THREE.NoColorSpace;
 NormalMap.wrapS = NormalMap.wrapT = THREE.RepeatWrapping;
-NormalMap.repeat.set(5, 5);
+NormalMap.repeat.set(2, 2);
 
 // Define custom shader
 const reflectorShader = {
   uniforms: {
     color: { value: new THREE.Color(0x7f7f7f) },
+    uTime: { value: 0 },
     tDiffuse: { value: null },
     tDepth: { value: null },
     textureMatrix: { value: new THREE.Matrix4() },
@@ -143,7 +158,7 @@ const reflectorShader = {
   }
 `,
 
-  fragmentShader: `
+  fragmentShader1: `
   uniform vec3 color;
   uniform sampler2D tDiffuse;
   uniform sampler2D uNormal;
@@ -182,9 +197,70 @@ const reflectorShader = {
     vec2 reflectionUv = vUv.xy / vUv.w;
 
     // Distort reflection by perturbed normal — only xy, not full projection
-    vec2 distortedUv = reflectionUv + normalize(perturbedNormal.xy)  * uNormalScale;
+    vec2 distortedUv = reflectionUv;
+
+    
 
     vec4 base = texture2D(tDiffuse, distortedUv);
+    gl_FragColor = vec4(base.rgb * color, 1.0);
+    // gl_FragColor = vec4(mapN * 2.0 - 1.0,1.0);
+    // gl_FragColor = vec4(reflectionUv,0.0, 1.0);
+    // gl_FragColor = texture2D(tDiffuse, reflectionUv);
+
+  }
+`,
+  fragmentShader: `
+  uniform vec3 color;
+  uniform sampler2D tDiffuse;
+  uniform float uTime; // You must pass time from JS
+
+  varying vec4 vUv;
+
+  // --- Simplex Noise Function (Inline) ---
+  vec3 permute(vec3 x) { return mod(((x*34.0)+1.0)*x, 289.0); }
+  float snoise(vec2 v){
+    const vec4 C = vec4(0.211324865405187, 0.366025403784439,
+             -0.577350269189626, 0.024390243902439);
+    vec2 i  = floor(v + dot(v, C.yy) );
+    vec2 x0 = v -   i + dot(i, C.xx);
+    vec2 i1;
+    i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
+    vec4 x12 = x0.xyxy + C.xxzz;
+    x12.xy -= i1;
+    i = mod(i, 289.0);
+    vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0 ))
+        + i.x + vec3(0.0, i1.x, 1.0 ));
+    vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
+    m = m*m ;
+    m = m*m ;
+    vec3 x = 2.0 * fract(p * C.www) - 1.0;
+    vec3 h = abs(x) - 0.5;
+    vec3 ox = floor(x + 0.5);
+    vec3 a0 = x - ox;
+    m *= 1.79284291400159 - 0.85373472095314 * ( a0*a0 + h*h );
+    vec3 g;
+    g.x  = a0.x  * x0.x  + h.x  * x0.y;
+    g.yz = a0.yz * x12.xz + h.yz * x12.yw;
+    return 130.0 * dot(m, g);
+  }
+  // ---------------------------------------
+
+  void main() {
+    vec2 reflectionUv = vUv.xy / vUv.w;
+
+    // Create distortion vector
+    // We use the noise value to offset X and Y differently for a "liquid" look
+    float strength = 0.01; // Adjust distortion intensity
+    vec2 distortion = vec2(
+      snoise(reflectionUv * (-100.0,-100.0) - vec2(uTime * 0.5,0.0)), 
+      snoise(reflectionUv * (-100.0,-100.0) - vec2(uTime * 0.5,0.0))
+    ) * strength;
+
+    vec2 distortedUv = reflectionUv + distortion;
+
+    // Sample the reflection texture
+    vec4 base = texture2D(tDiffuse, distortedUv);
+
     gl_FragColor = vec4(base.rgb * color, 1.0);
   }
 `,
@@ -197,8 +273,6 @@ const reflector = new Reflector(new THREE.PlaneGeometry(10, 10), {
   textureHeight: 1024 * devicePixelRatio,
   shader: reflectorShader,
 });
-console.log(reflector.material);
-
 reflector.rotation.x = -Math.PI / 2;
 reflector.position.y = -0.4;
 
@@ -237,6 +311,19 @@ pane.addBinding(reflector.position, "y", {
 });
 
 scene.add(reflector);
+
+const width = 1.5;
+const height = 3;
+const intensity = 5; // Higher intensity often needed for area lights
+const rectLight = new THREE.RectAreaLight(0xffffff, intensity, width, height);
+
+// scene.add(new RectAreaLightHelper(rectLight,'red'))
+
+// Position and orient the light
+rectLight.position.set(0, height/2 - .4, 0);
+rectLight.lookAt(0, height/2 - .4, 1); // Must look at the target object
+
+scene.add(rectLight);
 
 scene.add(new THREE.AmbientLight(0xffffff, 10));
 
@@ -351,14 +438,21 @@ vigFolder
     vignette.darkness = value;
   });
 
-const timer = new THREE.Timer();
+const clock = new THREE.Clock();
 
-let elt = timer.getElapsed();
+let elt = clock.getElapsedTime();
 
 function animate() {
-  const tm = timer.getElapsed();
-  const DT = tm - elt;
-  elt = tm;
+  const time = clock.getElapsedTime();
+  const DT = time - elt;
+  elt = time;
+
+  reflector.material.uniforms.uTime.value = time;
+
+  if (uflMixer) {
+    console.log(DT);
+    uflMixer.update(DT);
+  }
 
   composer.render(DT);
   requestAnimationFrame(animate);
