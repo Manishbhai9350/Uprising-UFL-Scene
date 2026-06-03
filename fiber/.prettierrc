@@ -1,0 +1,12 @@
+{
+  "overrides": [
+    {
+      "files": "*.frag",
+      "options": { "parser": "glsl" }
+    },
+    {
+      "files": "*.vert",
+      "options": { "parser": "glsl" }
+    }
+  ]
+}

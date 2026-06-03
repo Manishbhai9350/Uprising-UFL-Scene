@@ -314,7 +314,7 @@ scene.add(reflector);
 
 const width = 1.5;
 const height = 3;
-const intensity = 5; // Higher intensity often needed for area lights
+const intensity = 10; // Higher intensity often needed for area lights
 const rectLight = new THREE.RectAreaLight(0xffffff, intensity, width, height);
 
 // scene.add(new RectAreaLightHelper(rectLight,'red'))
@@ -324,8 +324,6 @@ rectLight.position.set(0, height/2 - .4, 0);
 rectLight.lookAt(0, height/2 - .4, 1); // Must look at the target object
 
 scene.add(rectLight);
-
-scene.add(new THREE.AmbientLight(0xffffff, 10));
 
 const controls = new OrbitControls(camera, canvas);
 
@@ -339,9 +337,9 @@ composer.addPass(new RenderPass(scene, camera));
 // Dual layer Kawase bloom — same as weareuprising
 const bloomCore = new BloomEffect({
   mipmapBlur: true,
-  luminanceThreshold: 0.5,
-  luminanceSmoothing: 0.08,
-  intensity: 1.2,
+  luminanceThreshold: 0.4,
+  luminanceSmoothing: 0.5,
+  intensity: .45,
   kernelSize: KernelSize.LARGE,
 });
 
@@ -368,6 +366,8 @@ const grain = new NoiseEffect({
 });
 grain.blendMode.opacity.value = 0.08;
 
+// composer.addPass(new EffectPass(camera,bloomCore))
+
 pane.addBinding(grain.blendMode.opacity, "value", {
   min: 0,
   max: 0.2,
@@ -378,7 +378,7 @@ pane.addBinding(grain.blendMode.opacity, "value", {
 
 const pp = pane.addFolder({ title: "Postprocessing", expanded: true });
 
-pp.hidden = true;
+// pp.hidden = true;
 
 // Bloom core
 const coreFolder = pp.addFolder({
@@ -406,6 +406,8 @@ coreFolder
 // Bloom halo
 const haloFolder = pp.addFolder({ title: "Bloom Halo (wide)", expanded: true });
 const haloParams = { threshold: 0.6, smoothing: 0.1, intensity: 0.4 };
+
+haloFolder.hidden = true;
 
 haloFolder
   .addBinding(haloParams, "threshold", { min: 0, max: 1, step: 0.01 })
