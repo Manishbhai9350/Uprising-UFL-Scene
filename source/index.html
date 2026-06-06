@@ -1,0 +1,1626 @@
+<!DOCTYPE html>
+<!-- saved from url=(0030)https://www.weareuprising.com/ -->
+<html lang="en" style="--ratio: 20%; --vh: 5.91px; --gw: 830px;">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <link rel="icon" type="image/png" href="https://www.weareuprising.com/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Uprising™ is a digital creative production studio based in Milan, Italy. We are designers, we are developers, we are Uprising™">
+  <meta name="keywords" content="uprising, digital, creative, production, company">
+  <meta name="theme-color" content="#000000">
+  <title>Uprising™ | Digital creative production company</title>
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="https://uprsg-site-v2.vercel.app">
+  <meta name="twitter:title" content="Uprising™ | Digital creative production company">
+  <meta name="twitter:description"
+    content="Uprising™ is a digital creative production studio based in Milan, Italy. We are designers, we are developers, we are Uprising™">
+  <meta name="twitter:image" content="https://uprsg-site-v2.vercel.app/assets/images/uprising-share.png">
+
+  <!-- Meta Facebook Markup -->
+  <meta property="og:url" content="https://uprsg-site-v2.vercel.app">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Uprising™ | Digital creative production company">
+  <meta property="og:description"
+    content="Uprising™ is a digital creative production studio based in Milan, Italy. We are designers, we are developers, we are Uprising™">
+  <meta property="og:image" content="https://uprsg-site-v2.vercel.app/assets/images/uprising-share.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/png">
+
+  <!-- Fonts -->
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.typekit.net/tcj7olj.css"> -->
+  <script type="module" crossorigin="" src="./src/main.js"></script>
+  <script rel="modulepreload" href="/modules/react.js"></script>
+  <script rel="modulepreload" href="/modules/three.js"></script>
+  <script rel="modulepreload" href="/modules/three-stdlib.js"></script>
+  <script rel="modulepreload" href="/modules/fiber.js"></script>
+  <script rel="modulepreload" href="/modules/utils.js"></script>
+  <script rel="modulepreload" href="/modules/store.js"></script>
+  <script rel="modulepreload" href="/modules/gsap.js"></script>
+  <link rel="stylesheet" href="./src/style.css">
+  <link rel="stylesheet" href="./src/main.css" media="all">
+  <!-- <link rel="stylesheet" href="./src/Matter.css" media="all"><style> -->
+  </style>
+  <style type="text/css" data-styled-jsx=""></style>
+  <style id="smooth-scrollbar-style">
+    [data-scrollbar] {
+      display: block;
+      position: relative;
+    }
+
+    .scroll-content {
+      display: flow-root;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+
+    .scrollbar-track {
+      position: absolute;
+      opacity: 0;
+      z-index: 1;
+      background: rgba(222, 222, 222, .75);
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-transition: opacity 0.5s 0.5s ease-out;
+      transition: opacity 0.5s 0.5s ease-out;
+    }
+
+    .scrollbar-track.show,
+    .scrollbar-track:hover {
+      opacity: 1;
+      -webkit-transition-delay: 0s;
+      transition-delay: 0s;
+    }
+
+    .scrollbar-track-x {
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 8px;
+    }
+
+    .scrollbar-track-y {
+      top: 0;
+      right: 0;
+      width: 8px;
+      height: 100%;
+    }
+
+    .scrollbar-thumb {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      background: rgba(0, 0, 0, .5);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body cz-shortcut-listen="true">
+  <div id="root">
+    <div
+      style="position: absolute; width: 100%; height: 100%; overflow: hidden; pointer-events: auto; top: 0px; left: 0px; z-index: 0;">
+      <div style="width: 100%; height: 100%;">
+        <canvas style="display: block; width: 1280px; height: 591.333px;" data-engine="three.js r150"
+          __spector_context_type="webgl2" width="1280" height="591" </canvas>
+      </div>
+    </div>
+    <!-- <div class="static">
+      <div
+        class="absolute top-1/2 left-1/2 w-[.1rem] h-[20rem] bg-white -translate-x-1/2 -translate-y-1/2 opacity-20 z-40"
+        data-gsap-base="true"
+        style="translate: none; rotate: none; scale: none; transform: translate(-50%, -50%) scale(1, 0);"></div>
+      <div class="absolute top-1/2 left-1/2 w-[.2rem] h-[20rem] -translate-x-1/2 -translate-y-1/2 z-40"
+        data-gsap-line="true"
+        style="translate: none; rotate: none; scale: none; transform: translate(-50%, -50%) scale(1, 0);">
+        <div class="w-full h-full bg-white scale-0 transition-transform duration-700 ease-out"
+          style="transform: scale(1, 1);"></div>
+      </div>
+    </div> -->
+    <!-- <svg class="hidden">
+      <symbol id="plyr-airplay">
+        <path d="M16 1H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3v-2H3V3h12v8h-2v2h3a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"></path>
+        <path d="M4 17h10l-5-6z"></path>
+      </symbol>
+      <symbol id="plyr-captions-off">
+        <path
+          d="M1 1c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h4.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H17c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1H1zm4.52 10.15c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41C8.47 4.96 7.46 3.76 5.5 3.76c-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69zm7.57 0c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41c-.28-1.15-1.29-2.35-3.25-2.35-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69z"
+          fill-rule="evenodd" fill-opacity=".5"></path>
+      </symbol>
+      <symbol id="plyr-captions-on">
+        <path
+          d="M1 1c-.6 0-1 .4-1 1v11c0 .6.4 1 1 1h4.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H17c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1H1zm4.52 10.15c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41C8.47 4.96 7.46 3.76 5.5 3.76c-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69zm7.57 0c1.99 0 3.01-1.32 3.28-2.41l-1.29-.39c-.19.66-.78 1.45-1.99 1.45-1.14 0-2.2-.83-2.2-2.34 0-1.61 1.12-2.37 2.18-2.37 1.23 0 1.78.75 1.95 1.43l1.3-.41c-.28-1.15-1.29-2.35-3.25-2.35-1.9 0-3.61 1.44-3.61 3.7 0 2.26 1.65 3.69 3.63 3.69z"
+          fill-rule="evenodd"></path>
+      </symbol>
+      <symbol id="plyr-download">
+        <path d="M9 13c.3 0 .5-.1.7-.3L15.4 7 14 5.6l-4 4V1H8v8.6l-4-4L2.6 7l5.7 5.7c.2.2.4.3.7.3zM2 15h14v2H2z"></path>
+      </symbol>
+      <symbol id="plyr-enter-fullscreen">
+        <path d="M10 3h3.6l-4 4L11 8.4l4-4V8h2V1h-7zM7 9.6l-4 4V10H1v7h7v-2H4.4l4-4z"></path>
+      </symbol>
+      <symbol id="plyr-exit-fullscreen">
+        <path d="M1 12h3.6l-4 4L2 17.4l4-4V17h2v-7H1zM16 .6l-4 4V1h-2v7h7V6h-3.6l4-4z"></path>
+      </symbol>
+      <symbol id="plyr-fast-forward">
+        <path d="M7.875 7.171L0 1v16l7.875-6.171V17L18 9 7.875 1z"></path>
+      </symbol>
+      <symbol id="plyr-logo-vimeo">
+        <path
+          d="M17 5.3c-.1 1.6-1.2 3.7-3.3 6.4-2.2 2.8-4 4.2-5.5 4.2-.9 0-1.7-.9-2.4-2.6C5 10.9 4.4 6 3 6c-.1 0-.5.3-1.2.8l-.8-1c.8-.7 3.5-3.4 4.7-3.5 1.2-.1 2 .7 2.3 2.5.3 2 .8 6.1 1.8 6.1.9 0 2.5-3.4 2.6-4 .1-.9-.3-1.9-2.3-1.1.8-2.6 2.3-3.8 4.5-3.8 1.7.1 2.5 1.2 2.4 3.3z">
+        </path>
+      </symbol>
+      <symbol id="plyr-logo-youtube">
+        <path
+          d="M16.8 5.8c-.2-1.3-.8-2.2-2.2-2.4C12.4 3 9 3 9 3s-3.4 0-5.6.4C2 3.6 1.3 4.5 1.2 5.8 1 7.1 1 9 1 9s0 1.9.2 3.2c.2 1.3.8 2.2 2.2 2.4C5.6 15 9 15 9 15s3.4 0 5.6-.4c1.4-.3 2-1.1 2.2-2.4.2-1.3.2-3.2.2-3.2s0-1.9-.2-3.2zM7 12V6l5 3-5 3z">
+        </path>
+      </symbol>
+      <symbol id="plyr-muted">
+        <path
+          d="M12.4 12.5l2.1-2.1 2.1 2.1 1.4-1.4L15.9 9 18 6.9l-1.4-1.4-2.1 2.1-2.1-2.1L11 6.9 13.1 9 11 11.1zM3.786 6.008H.714C.286 6.008 0 6.31 0 6.76v4.512c0 .452.286.752.714.752h3.072l4.071 3.858c.5.3 1.143 0 1.143-.602V2.752c0-.601-.643-.977-1.143-.601L3.786 6.008z">
+        </path>
+      </symbol>
+      <symbol id="plyr-pause">
+        <path
+          d="M6 1H3c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1zM12 1c-.6 0-1 .4-1 1v14c0 .6.4 1 1 1h3c.6 0 1-.4 1-1V2c0-.6-.4-1-1-1h-3z">
+        </path>
+      </symbol>
+      <symbol id="plyr-pip">
+        <path d="M13.293 3.293L7.022 9.564l1.414 1.414 6.271-6.271L17 7V1h-6z"></path>
+        <path d="M13 15H3V5h5V3H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-6h-2v5z"></path>
+      </symbol>
+      <symbol id="plyr-play">
+        <path
+          d="M0 1.46 2.07 9 0 16.54c0 1.15 1.17 1.85 2.07 1.22l10.96-7.54c.83-.57.83-1.88 0-2.46L2.07.23C1.17-.39 0 .31 0 1.46Z">
+        </path>
+      </symbol>
+      <symbol id="plyr-restart">
+        <path
+          d="M9.7 1.2l.7 6.4 2.1-2.1c1.9 1.9 1.9 5.1 0 7-.9 1-2.2 1.5-3.5 1.5-1.3 0-2.6-.5-3.5-1.5-1.9-1.9-1.9-5.1 0-7 .6-.6 1.4-1.1 2.3-1.3l-.6-1.9C6 2.6 4.9 3.2 4 4.1 1.3 6.8 1.3 11.2 4 14c1.3 1.3 3.1 2 4.9 2 1.9 0 3.6-.7 4.9-2 2.7-2.7 2.7-7.1 0-9.9L16 1.9l-6.3-.7z">
+        </path>
+      </symbol>
+      <symbol id="plyr-rewind">
+        <path d="M10.125 1L0 9l10.125 8v-6.171L18 17V1l-7.875 6.171z"></path>
+      </symbol>
+      <symbol id="plyr-settings">
+        <path
+          d="M16.135 7.784a2 2 0 0 1-1.23-2.969c.322-.536.225-.998-.094-1.316l-.31-.31c-.318-.318-.78-.415-1.316-.094a2 2 0 0 1-2.969-1.23C10.065 1.258 9.669 1 9.219 1h-.438c-.45 0-.845.258-.997.865a2 2 0 0 1-2.969 1.23c-.536-.322-.999-.225-1.317.093l-.31.31c-.318.318-.415.781-.093 1.317a2 2 0 0 1-1.23 2.969C1.26 7.935 1 8.33 1 8.781v.438c0 .45.258.845.865.997a2 2 0 0 1 1.23 2.969c-.322.536-.225.998.094 1.316l.31.31c.319.319.782.415 1.316.094a2 2 0 0 1 2.969 1.23c.151.607.547.865.997.865h.438c.45 0 .845-.258.997-.865a2 2 0 0 1 2.969-1.23c.535.321.997.225 1.316-.094l.31-.31c.318-.318.415-.781.094-1.316a2 2 0 0 1 1.23-2.969c.607-.151.865-.547.865-.997v-.438c0-.451-.26-.846-.865-.997zM9 12a3 3 0 1 1 0-6 3 3 0 0 1 0 6z">
+        </path>
+      </symbol>
+      <symbol id="plyr-volume">
+        <path
+          d="M15.6 3.3c-.4-.4-1-.4-1.4 0-.4.4-.4 1 0 1.4C15.4 5.9 16 7.4 16 9c0 1.6-.6 3.1-1.8 4.3-.4.4-.4 1 0 1.4.2.2.5.3.7.3.3 0 .5-.1.7-.3C17.1 13.2 18 11.2 18 9s-.9-4.2-2.4-5.7z">
+        </path>
+        <path
+          d="M11.282 5.282a.909.909 0 0 0 0 1.316c.735.735.995 1.458.995 2.402 0 .936-.425 1.917-.995 2.487a.909.909 0 0 0 0 1.316c.145.145.636.262 1.018.156a.725.725 0 0 0 .298-.156C13.773 11.733 14.13 10.16 14.13 9c0-.17-.002-.34-.011-.51-.053-.992-.319-2.005-1.522-3.208a.909.909 0 0 0-1.316 0zM3.786 6.008H.714C.286 6.008 0 6.31 0 6.76v4.512c0 .452.286.752.714.752h3.072l4.071 3.858c.5.3 1.143 0 1.143-.602V2.752c0-.601-.643-.977-1.143-.601L3.786 6.008z">
+        </path>
+      </symbol>
+    </svg> -->
+    <!-- <header class="fixed left-0 top-0 w-full z-20">
+      <div class="container">
+        <div class="position relative translate-y-[calc(1.9rem+2.5rem)] md:translate-y-[calc(3.2rem+5rem)]">
+          <div style="display:none" class="absolute top-0 left-0 -translate-y-1/2 overflow-hidden">
+            <svg width="100"
+              height="127" viewBox="0 0 100 127" fill="none" xmlns="http://www.w3.org/2000/svg"
+              class="w-[3rem] h-[3.8rem] md:w-[5rem] md:h-[6.3rem]" data-gsap-logo="true"
+              style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+              <path
+                d="M49.4858 22.5896L36.804 43.3533C36.804 43.3533 62.7044 108.161 63.6661 110.643C65.3548 115.03 64.5272 117.435 62.8609 119.695C62.4472 120.263 61.8097 120.897 61.0828 121.543C53.221 102.371 23.8315 30.6724 22.6013 27.5217C16.171 11.0666 21.7402 0 21.7402 0L0 43.164C0 43.164 26.0234 108.817 26.795 110.643C31.8275 122.578 22.9815 126.241 22.9815 126.241H99.8886L58.2982 28.4012C56.7996 24.8831 53.3328 22.5896 49.4858 22.5896Z"
+                fill="white"></path>
+              <path d="M81.1453 32.5985H82.9011V24.1928H85.9988V22.5896H78.0364V24.1928H81.1453V32.5985Z" fill="white">
+              </path>
+              <path
+                d="M97.2154 22.5896L94.3636 29.9042L91.5007 22.5896H88.7161V32.5985H90.4719V24.1928H90.5278L93.8492 32.5985H94.8445L98.1995 24.1928H98.2442V32.5985H100V22.5896H97.2154Z"
+                fill="white"></path>
+            </svg>
+          </div>
+          <div class="absolute top-0 right-0 -translate-y-1/2 flex space-x-[1rem] md:space-x-[2rem]"><button
+              class="relative block p-[.5rem] -m-[.5rem] group"><span class="relative block overflow-hidden"><span
+                  class="relative font-condensed text-regular md:text-regular-lg block p-[.1rem]"
+                  data-gsap-reel-label="true"
+                  style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Showreel</span></span><span
+                class="absolute left-[.6rem] right-[.6rem] bottom-[.1rem] md:-bottom-0 h-[.2rem]"
+                data-gsap-reel-line="true"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); transform-origin: 0% 50%;"><span
+                  class="absolute top-0 left-0 w-full h-full origin-top-right transition-transform duration-300 ease-out delay-100 bg-white group-hover:delay-0 group-hover:ease-in-out group-hover:translate-x-[1rem] group-hover:scale-x-0"></span><span
+                  class="absolute top-0 left-0 w-full h-full origin-top-left -translate-x-[1rem] scale-x-0 transition-transform duration-300 ease-out bg-white group-hover:ease-in-out group-hover:delay-100 group-hover:translate-x-0 group-hover:scale-100"></span></span></button><button
+              class="relative block p-[.5rem] -m-[.5rem] group"><span class="relative block overflow-hidden"><span
+                  class="relative block overflow-hidden" data-gsap-link-label="true"
+                  style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"><span
+                    class="relative block" data-gsap-label="true"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"><span
+                      class="relative font-condensed text-regular md:text-regular-lg block p-[.1rem]">About</span><span
+                      class="absolute font-condensed text-regular md:text-regular-lg block top-0 left-0 p-[.1rem] translate-y-full">Works</span></span></span></span><span
+                class="absolute left-[.6rem] right-[.6rem] bottom-[.1rem] md:-bottom-0 h-[.2rem]"
+                data-gsap-link-line="true"
+                style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px); transform-origin: 0% 50%;"><span
+                  class="absolute top-0 left-0 w-full h-full origin-top-right transition-transform duration-300 ease-out delay-100 bg-white group-hover:delay-0 group-hover:ease-in-out group-hover:translate-x-[1rem] group-hover:scale-x-0"></span><span
+                  class="absolute top-0 left-0 w-full h-full origin-top-left -translate-x-[1rem] scale-x-0 transition-transform duration-300 ease-out bg-white group-hover:ease-in-out group-hover:delay-100 group-hover:translate-x-0 group-hover:scale-100"></span></span></button>
+          </div>
+        </div>
+      </div>
+    </header> -->
+    <!-- <main style="display:none" class="absolute top-0 left-0 right-0 bottom-0 overflow-hidden">
+      <h1 class="sr-only">Home</h1>
+      <section class="static">
+        <div id="uprising" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+            <div
+              class="absolute select-none top-0 left-0 flex w-full h-full justify-center items-end md:items-center pb-24 md:pb-0 bg-gradient-to-t from-black from-0% via-black via-from-40% to-transparent to-60% md:bg-none">
+              <div class="container mb-[7rem] md:mb-0">
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-8 md:gap-x-10 lg:gap-x-12">
+                  <div class="col-span-4 md:col-span-6 lg:col-start-2 lg:col-span-10">
+                    <div class="grid grid-cols-1 gap-4 md:gap-8">
+                      <div class="col-span-1">
+                        <p class="overflow-hidden mb-[.3em]"><span
+                            class="font-condensed text-regular md:text-regular-lg [&amp;&gt;b]:font-bold text-primary inline-block"
+                            data-gsap-subheadline="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">We are
+                            <b>Uprising</b>™</span></p>
+                      </div>
+                      <div class="col-span-1 max-w-[92rem]">
+                        <h1 class="font-heading text-h2 md:text-h2-lg -my-[.1em] [&amp;_b]:text-primary"
+                          data-gsap-headline="true" style="">
+                          <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                            <div class="line"
+                              style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                              Digital Production</div>
+                          </div>
+                          <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                            <div class="line"
+                              style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                              <b>Duo</b> Toward Innovative
+                            </div>
+                          </div>
+                          <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                            <div class="line"
+                              style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                              And Immersive Projects</div>
+                          </div>
+                        </h1>
+                      </div>
+                      <div class="col-span-1 lg:text-right">
+                        <p class="overflow-hidden leading-7 md:leading-8"><span
+                            class="inline-block overflow-hidden"><span
+                              class="font-condensed text-regular md:text-regular-lg inline-block"
+                              data-gsap-location="true"
+                              style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Based
+                              in Milan.</span></span><br><span class="overflow-hidden"><span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold inline-block"
+                              data-gsap-availability="true"
+                              style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Available
+                              Worldwide.</span></span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="ufl" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+            <div
+              class="absolute select-none top-0 left-0 flex w-full h-full justify-center items-end md:items-center bg-gradient-to-t from-black from-0% via-black via-from-40% to-transparent to-60% md:bg-none">
+              <div class="container pb-40 md:pb-0">
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-8 md:gap-x-10 lg:gap-x-12">
+                  <div class="col-span-4 md:col-span-6 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8">
+                    <div class="grid grid-cols-1 gap-3 md:gap-8">
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-client="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Client:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">Studiogusto®</span></span>
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="font-heading text-h2 md:text-h2-lg -my-[.1em] heading text-primary"
+                          data-gsap-title="true"><b>
+                            <div style="position:relative;display:inline-block;" class="word">
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">U</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">F</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">L</div>
+                              </div>
+                            </div>
+                          </b></h1>
+                      </div>
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-role="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Uprising Role:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">UX / UI /
+                              Development / 3D Production</span></span></p>
+                      </div>
+                      <div class="col-span-1 max-w-[52rem]">
+                        <p class="font-condensed text-large md:text-large-lg text-secondary"
+                          data-gsap-description="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            Master the pitch and rise in the ranks to become the </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            champion of the UFL universe!</div>
+                        </div>
+                        </p>
+                      </div>
+                      <div class="col-span-1 mt-6 md:mt-2"><button data-gsap-button="true"
+                          class="relative inline-block w-full h-auto md:w-auto overflow-hidden transition-shadow duration-500 ease-out group bg-primary pt-[1.6rem] px-[2.4rem] pb-[1.2rem] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-0 before:transition-transform before:duration-300 before:ease-out before:translate-y-full hover:before:translate-y-0 shadow-[0_0_40px_5px_rgba(228,103,103,.6)] hover:shadow-[0_0_40px_5px_rgba(255,255,255,.5)]"
+                          style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0px, 20px);"><span
+                            data-label="View Project"
+                            class="relative font-condensed text-regular-lg inline-block overflow-hidden z-10 after:content-[attr(data-label)] after:text-primary after:absolute after:top-0 after:left-0 after:w-full after:h-full after:translate-y-full after:transition-transform after:duration-300 group-hover:after:translate-y-0 text-white after:text-primary"><span
+                              class="relative inline-block transition-transform duration-300 group-hover:-translate-y-full">View
+                              Project</span></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="boombloom" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+            <div
+              class="absolute select-none top-0 left-0 flex w-full h-full justify-center items-end md:items-center bg-gradient-to-t from-black from-0% via-black via-from-40% to-transparent to-60% md:bg-none">
+              <div class="container pb-40 md:pb-0">
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-8 md:gap-x-10 lg:gap-x-12">
+                  <div class="col-span-4 md:col-span-6 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8">
+                    <div class="grid grid-cols-1 gap-3 md:gap-8">
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-client="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Client:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">Studiogusto®</span></span>
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="font-heading text-h2 md:text-h2-lg -my-[.1em] heading text-primary"
+                          data-gsap-title="true">
+                          <div style="position:relative;display:inline-block;" class="word">
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">B</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">o</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">o</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">m</div>
+                            </div>
+                          </div><b>
+                            <div style="position:relative;display:inline-block;" class="word">
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">&amp;</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">B</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">l</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">o</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">o</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">m</div>
+                              </div>
+                            </div>
+                          </b>
+                        </h1>
+                      </div>
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-role="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Uprising Role:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">UX / UI /
+                              Development / 3D Production</span></span></p>
+                      </div>
+                      <div class="col-span-1 max-w-[52rem]">
+                        <p class="font-condensed text-large md:text-large-lg text-secondary"
+                          data-gsap-description="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            In an era of digital evolution, Boom &amp; Bloom emerges as a </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            catalyst for innovation, a haven for boundless creativity.</div>
+                        </div>
+                        </p>
+                      </div>
+                      <div class="col-span-1 mt-6 md:mt-2"><button data-gsap-button="true"
+                          class="relative inline-block w-full h-auto md:w-auto overflow-hidden transition-shadow duration-500 ease-out group bg-primary pt-[1.6rem] px-[2.4rem] pb-[1.2rem] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-0 before:transition-transform before:duration-300 before:ease-out before:translate-y-full hover:before:translate-y-0 shadow-[0_0_40px_5px_rgba(228,103,103,.6)] hover:shadow-[0_0_40px_5px_rgba(255,255,255,.5)]"
+                          style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0px, 20px);"><span
+                            data-label="View Project"
+                            class="relative font-condensed text-regular-lg inline-block overflow-hidden z-10 after:content-[attr(data-label)] after:text-primary after:absolute after:top-0 after:left-0 after:w-full after:h-full after:translate-y-full after:transition-transform after:duration-300 group-hover:after:translate-y-0 text-white after:text-primary"><span
+                              class="relative inline-block transition-transform duration-300 group-hover:-translate-y-full">View
+                              Project</span></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="doublepoint" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+            <div
+              class="absolute select-none top-0 left-0 flex w-full h-full justify-center items-end md:items-center bg-gradient-to-t from-black from-0% via-black via-from-40% to-transparent to-60% md:bg-none">
+              <div class="container pb-40 md:pb-0">
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-8 md:gap-x-10 lg:gap-x-12">
+                  <div class="col-span-4 md:col-span-6 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8">
+                    <div class="grid grid-cols-1 gap-3 md:gap-8">
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-client="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Client:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">Doublepoint</span></span>
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="font-heading text-h2 md:text-h2-lg -my-[.1em] heading text-primary"
+                          data-gsap-title="true">
+                          <div style="position:relative;display:inline-block;" class="word">
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">D</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">o</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">u</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">b</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">l</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">e</div>
+                            </div>
+                          </div><b>
+                            <div style="position:relative;display:inline-block;" class="word">
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">p</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">o</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">i</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">n</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">t</div>
+                              </div>
+                            </div>
+                          </b>
+                        </h1>
+                      </div>
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-role="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Uprising Role:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">Uprising
+                              Role: UX / UI / 3D Production</span></span></p>
+                      </div>
+                      <div class="col-span-1 max-w-[52rem]">
+                        <p class="font-condensed text-large md:text-large-lg text-secondary"
+                          data-gsap-description="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            Doublepoint provides future computing platforms more </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            intuitive, robust and versatile interactions.</div>
+                        </div>
+                        </p>
+                      </div>
+                      <div class="col-span-1 mt-6 md:mt-2"><button data-gsap-button="true"
+                          class="relative inline-block w-full h-auto md:w-auto overflow-hidden transition-shadow duration-500 ease-out group bg-primary pt-[1.6rem] px-[2.4rem] pb-[1.2rem] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-0 before:transition-transform before:duration-300 before:ease-out before:translate-y-full hover:before:translate-y-0 shadow-[0_0_40px_5px_rgba(228,103,103,.6)] hover:shadow-[0_0_40px_5px_rgba(255,255,255,.5)]"
+                          style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0px, 20px);"><span
+                            data-label="View Project"
+                            class="relative font-condensed text-regular-lg inline-block overflow-hidden z-10 after:content-[attr(data-label)] after:text-primary after:absolute after:top-0 after:left-0 after:w-full after:h-full after:translate-y-full after:transition-transform after:duration-300 group-hover:after:translate-y-0 text-white after:text-primary"><span
+                              class="relative inline-block transition-transform duration-300 group-hover:-translate-y-full">View
+                              Project</span></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="seacat" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+            <div
+              class="absolute select-none top-0 left-0 flex w-full h-full justify-center items-end md:items-center bg-gradient-to-t from-black from-0% via-black via-from-40% to-transparent to-60% md:bg-none">
+              <div class="container pb-40 md:pb-0">
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-8 md:gap-x-10 lg:gap-x-12">
+                  <div class="col-span-4 md:col-span-6 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8">
+                    <div class="grid grid-cols-1 gap-3 md:gap-8">
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-client="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Client:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">Studiogusto®</span></span>
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="font-heading text-h2 md:text-h2-lg -my-[.1em] heading text-primary"
+                          data-gsap-title="true"><b>
+                            <div style="position:relative;display:inline-block;" class="word">
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">S</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">e</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">a</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">c</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">a</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">t</div>
+                              </div>
+                            </div>
+                          </b>
+                          <div style="position:relative;display:inline-block;" class="word">
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">b</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">y</div>
+                            </div>
+                          </div>
+                          <div style="position:relative;display:inline-block;" class="word">
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">R</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">o</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">s</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">s</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">i</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">n</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">a</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">v</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">i</div>
+                            </div>
+                          </div>
+                        </h1>
+                      </div>
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-role="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Uprising Role:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">UX / UI / 3D
+                              Production</span></span></p>
+                      </div>
+                      <div class="col-span-1 max-w-[52rem]">
+                        <p class="font-condensed text-large md:text-large-lg text-secondary"
+                          data-gsap-description="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            The SeaCat Is A New All-Electric Catamaran Concept, </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            Totally Solar-Powered.</div>
+                        </div>
+                        </p>
+                      </div>
+                      <div class="col-span-1 mt-6 md:mt-2"><button data-gsap-button="true"
+                          class="relative inline-block w-full h-auto md:w-auto overflow-hidden transition-shadow duration-500 ease-out group bg-primary pt-[1.6rem] px-[2.4rem] pb-[1.2rem] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-0 before:transition-transform before:duration-300 before:ease-out before:translate-y-full hover:before:translate-y-0 shadow-[0_0_40px_5px_rgba(228,103,103,.6)] hover:shadow-[0_0_40px_5px_rgba(255,255,255,.5)]"
+                          style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0px, 20px);"><span
+                            data-label="View Project"
+                            class="relative font-condensed text-regular-lg inline-block overflow-hidden z-10 after:content-[attr(data-label)] after:text-primary after:absolute after:top-0 after:left-0 after:w-full after:h-full after:translate-y-full after:transition-transform after:duration-300 group-hover:after:translate-y-0 text-white after:text-primary"><span
+                              class="relative inline-block transition-transform duration-300 group-hover:-translate-y-full">View
+                              Project</span></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="planetfarms" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+            <div
+              class="absolute select-none top-0 left-0 flex w-full h-full justify-center items-end md:items-center bg-gradient-to-t from-black from-0% via-black via-from-40% to-transparent to-60% md:bg-none">
+              <div class="container pb-40 md:pb-0">
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-8 md:gap-x-10 lg:gap-x-12">
+                  <div class="col-span-4 md:col-span-6 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8">
+                    <div class="grid grid-cols-1 gap-3 md:gap-8">
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-client="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Client:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">TBWA</span></span>
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="font-heading text-h2 md:text-h2-lg -my-[.1em] heading text-primary"
+                          data-gsap-title="true">
+                          <div style="position:relative;display:inline-block;" class="word">
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">P</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">l</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">a</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">n</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">e</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">t</div>
+                            </div>
+                          </div> <b>
+                            <div style="position:relative;display:inline-block;" class="word">
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">F</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">a</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">r</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">m</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">s</div>
+                              </div>
+                            </div>
+                          </b>
+                        </h1>
+                      </div>
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-role="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Uprising Role:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">UX / UI /
+                              Development / 3D Production</span></span></p>
+                      </div>
+                      <div class="col-span-1 max-w-[52rem]">
+                        <p class="font-condensed text-large md:text-large-lg text-secondary"
+                          data-gsap-description="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            Discover The Largest And Most Innovative Vertical Farm In </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            Europe.</div>
+                        </div>
+                        </p>
+                      </div>
+                      <div class="col-span-1 mt-6 md:mt-2"><button data-gsap-button="true"
+                          class="relative inline-block w-full h-auto md:w-auto overflow-hidden transition-shadow duration-500 ease-out group bg-primary pt-[1.6rem] px-[2.4rem] pb-[1.2rem] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-0 before:transition-transform before:duration-300 before:ease-out before:translate-y-full hover:before:translate-y-0 shadow-[0_0_40px_5px_rgba(228,103,103,.6)] hover:shadow-[0_0_40px_5px_rgba(255,255,255,.5)]"
+                          style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0px, 20px);"><span
+                            data-label="View Project"
+                            class="relative font-condensed text-regular-lg inline-block overflow-hidden z-10 after:content-[attr(data-label)] after:text-primary after:absolute after:top-0 after:left-0 after:w-full after:h-full after:translate-y-full after:transition-transform after:duration-300 group-hover:after:translate-y-0 text-white after:text-primary"><span
+                              class="relative inline-block transition-transform duration-300 group-hover:-translate-y-full">View
+                              Project</span></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="mariacallas" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+            <div
+              class="absolute select-none top-0 left-0 flex w-full h-full justify-center items-end md:items-center bg-gradient-to-t from-black from-0% via-black via-from-40% to-transparent to-60% md:bg-none">
+              <div class="container pb-40 md:pb-0">
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-8 md:gap-x-10 lg:gap-x-12">
+                  <div class="col-span-4 md:col-span-6 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8">
+                    <div class="grid grid-cols-1 gap-3 md:gap-8">
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-client="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Client:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">Warner Music
+                              LTD</span></span></p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="font-heading text-h2 md:text-h2-lg -my-[.1em] heading text-primary"
+                          data-gsap-title="true">
+                          <div style="position:relative;display:inline-block;" class="word">
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">M</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">a</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">r</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">i</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">a</div>
+                            </div>
+                          </div> <b>
+                            <div style="position:relative;display:inline-block;" class="word">
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">C</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">a</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">l</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">l</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">a</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">s</div>
+                              </div>
+                            </div>
+                          </b>
+                        </h1>
+                      </div>
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-role="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Uprising Role:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">UX / UI /
+                              Development / 3D Production</span></span></p>
+                      </div>
+                      <div class="col-span-1 max-w-[52rem]">
+                        <p class="font-condensed text-large md:text-large-lg text-secondary"
+                          data-gsap-description="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            Warner Classics celebrates Maria Callas through the first </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            official website dedicated to La Divina.</div>
+                        </div>
+                        </p>
+                      </div>
+                      <div class="col-span-1 mt-6 md:mt-2"><button data-gsap-button="true"
+                          class="relative inline-block w-full h-auto md:w-auto overflow-hidden transition-shadow duration-500 ease-out group bg-primary pt-[1.6rem] px-[2.4rem] pb-[1.2rem] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-0 before:transition-transform before:duration-300 before:ease-out before:translate-y-full hover:before:translate-y-0 shadow-[0_0_40px_5px_rgba(228,103,103,.6)] hover:shadow-[0_0_40px_5px_rgba(255,255,255,.5)]"
+                          style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0px, 20px);"><span
+                            data-label="View Project"
+                            class="relative font-condensed text-regular-lg inline-block overflow-hidden z-10 after:content-[attr(data-label)] after:text-primary after:absolute after:top-0 after:left-0 after:w-full after:h-full after:translate-y-full after:transition-transform after:duration-300 group-hover:after:translate-y-0 text-white after:text-primary"><span
+                              class="relative inline-block transition-transform duration-300 group-hover:-translate-y-full">View
+                              Project</span></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="oropress" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+            <div
+              class="absolute select-none top-0 left-0 flex w-full h-full justify-center items-end md:items-center bg-gradient-to-t from-black from-0% via-black via-from-40% to-transparent to-60% md:bg-none">
+              <div class="container pb-40 md:pb-0">
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-8 md:gap-x-10 lg:gap-x-12">
+                  <div class="col-span-4 md:col-span-6 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8">
+                    <div class="grid grid-cols-1 gap-3 md:gap-8">
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-client="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Client:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">Robilant</span></span>
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="font-heading text-h2 md:text-h2-lg -my-[.1em] heading text-primary"
+                          data-gsap-title="true">
+                          <div style="position:relative;display:inline-block;" class="word">
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">O</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">r</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">o</div>
+                            </div>
+                          </div><b>
+                            <div style="position:relative;display:inline-block;" class="word">
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">P</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">r</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">e</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">s</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">s</div>
+                              </div>
+                            </div>
+                          </b>
+                        </h1>
+                      </div>
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-role="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Uprising Role:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">UX / UI /
+                              Development / 3D Production</span></span></p>
+                      </div>
+                      <div class="col-span-1 max-w-[52rem]">
+                        <p class="font-condensed text-large md:text-large-lg text-secondary"
+                          data-gsap-description="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            Explore the vast selection of premium foils and films </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            meticulously curated by Oropress.</div>
+                        </div>
+                        </p>
+                      </div>
+                      <div class="col-span-1 mt-6 md:mt-2"><button data-gsap-button="true"
+                          class="relative inline-block w-full h-auto md:w-auto overflow-hidden transition-shadow duration-500 ease-out group bg-primary pt-[1.6rem] px-[2.4rem] pb-[1.2rem] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-0 before:transition-transform before:duration-300 before:ease-out before:translate-y-full hover:before:translate-y-0 shadow-[0_0_40px_5px_rgba(228,103,103,.6)] hover:shadow-[0_0_40px_5px_rgba(255,255,255,.5)]"
+                          style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0px, 20px);"><span
+                            data-label="View Project"
+                            class="relative font-condensed text-regular-lg inline-block overflow-hidden z-10 after:content-[attr(data-label)] after:text-primary after:absolute after:top-0 after:left-0 after:w-full after:h-full after:translate-y-full after:transition-transform after:duration-300 group-hover:after:translate-y-0 text-white after:text-primary"><span
+                              class="relative inline-block transition-transform duration-300 group-hover:-translate-y-full">View
+                              Project</span></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="igoodi" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+            <div
+              class="absolute select-none top-0 left-0 flex w-full h-full justify-center items-end md:items-center bg-gradient-to-t from-black from-0% via-black via-from-40% to-transparent to-60% md:bg-none">
+              <div class="container pb-40 md:pb-0">
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-8 md:gap-x-10 lg:gap-x-12">
+                  <div class="col-span-4 md:col-span-6 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8">
+                    <div class="grid grid-cols-1 gap-3 md:gap-8">
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-client="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Client:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">Igoodi</span></span>
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="font-heading text-h2 md:text-h2-lg -my-[.1em] heading text-primary"
+                          data-gsap-title="true"><b>
+                            <div style="position:relative;display:inline-block;" class="word">
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">I</div>
+                              </div>
+                            </div>
+                          </b>
+                          <div style="position:relative;display:inline-block;" class="word">
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">G</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">o</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">o</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">d</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">i</div>
+                            </div>
+                          </div>
+                        </h1>
+                      </div>
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-role="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Uprising Role:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">UX / UI /
+                              Development / 3D Production</span></span></p>
+                      </div>
+                      <div class="col-span-1 max-w-[52rem]">
+                        <p class="font-condensed text-large md:text-large-lg text-secondary"
+                          data-gsap-description="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            4D Body Scanning And Avatar Platform For B2B And B2C </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            Markets. A High-Tech Project Factory.</div>
+                        </div>
+                        </p>
+                      </div>
+                      <div class="col-span-1 mt-6 md:mt-2"><button data-gsap-button="true"
+                          class="relative inline-block w-full h-auto md:w-auto overflow-hidden transition-shadow duration-500 ease-out group bg-primary pt-[1.6rem] px-[2.4rem] pb-[1.2rem] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-0 before:transition-transform before:duration-300 before:ease-out before:translate-y-full hover:before:translate-y-0 shadow-[0_0_40px_5px_rgba(228,103,103,.6)] hover:shadow-[0_0_40px_5px_rgba(255,255,255,.5)]"
+                          style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0px, 20px);"><span
+                            data-label="View Project"
+                            class="relative font-condensed text-regular-lg inline-block overflow-hidden z-10 after:content-[attr(data-label)] after:text-primary after:absolute after:top-0 after:left-0 after:w-full after:h-full after:translate-y-full after:transition-transform after:duration-300 group-hover:after:translate-y-0 text-white after:text-primary"><span
+                              class="relative inline-block transition-transform duration-300 group-hover:-translate-y-full">View
+                              Project</span></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="mausoleum" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+            <div
+              class="absolute select-none top-0 left-0 flex w-full h-full justify-center items-end md:items-center bg-gradient-to-t from-black from-0% via-black via-from-40% to-transparent to-60% md:bg-none">
+              <div class="container pb-40 md:pb-0">
+                <div class="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-x-8 md:gap-x-10 lg:gap-x-12">
+                  <div class="col-span-4 md:col-span-6 lg:col-start-2 lg:col-span-10 xl:col-start-3 xl:col-span-8">
+                    <div class="grid grid-cols-1 gap-3 md:gap-8">
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-client="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Client:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">Havas</span></span>
+                        </p>
+                      </div>
+                      <div class="col-span-1">
+                        <h1 class="font-heading text-h2 md:text-h2-lg -my-[.1em] heading text-primary"
+                          data-gsap-title="true"><b>
+                            <div style="position:relative;display:inline-block;" class="word">
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">M</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">a</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">u</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">s</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">o</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">l</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">e</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">u</div>
+                              </div>
+                              <div style="position:relative;display:inline-block;" class="char-wrap">
+                                <div
+                                  style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                  class="char">m</div>
+                              </div>
+                            </div>
+                          </b>
+                          <div style="position:relative;display:inline-block;" class="word">
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">o</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">f</div>
+                            </div>
+                          </div>
+                          <div style="position:relative;display:inline-block;" class="word">
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">A</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">u</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">g</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">u</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">s</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">t</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">u</div>
+                            </div>
+                            <div style="position:relative;display:inline-block;" class="char-wrap">
+                              <div
+                                style="position: relative; display: inline-block; translate: none; rotate: none; scale: none; transform: translate(100px, 0px); color: rgb(255, 255, 255);"
+                                class="char">s</div>
+                            </div>
+                          </div>
+                        </h1>
+                      </div>
+                      <div class="col-span-1">
+                        <p class="overflow-hidden"><span class="inline-block text-secondary" data-gsap-role="true"
+                            style="translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);"><span
+                              class="font-condensed text-regular md:text-regular-lg">Uprising Role:</span> <span
+                              class="font-condensed text-regular md:text-regular-lg font-bold md:font-bold">UX / UI /
+                              Development / 3D Production</span></span></p>
+                      </div>
+                      <div class="col-span-1 max-w-[52rem]">
+                        <p class="font-condensed text-large md:text-large-lg text-secondary"
+                          data-gsap-description="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            An Interactive Journey Through The Mausoleum Of </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: start; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: start; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 125%) skew(0deg, 3deg); color: rgb(255, 255, 255);">
+                            Augustus And The History Of Rome.</div>
+                        </div>
+                        </p>
+                      </div>
+                      <div class="col-span-1 mt-6 md:mt-2"><button data-gsap-button="true"
+                          class="relative inline-block w-full h-auto md:w-auto overflow-hidden transition-shadow duration-500 ease-out group bg-primary pt-[1.6rem] px-[2.4rem] pb-[1.2rem] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-0 before:transition-transform before:duration-300 before:ease-out before:translate-y-full hover:before:translate-y-0 shadow-[0_0_40px_5px_rgba(228,103,103,.6)] hover:shadow-[0_0_40px_5px_rgba(255,255,255,.5)]"
+                          style="translate: none; rotate: none; scale: none; opacity: 0; visibility: hidden; transform: translate(0px, 20px);"><span
+                            data-label="View Project"
+                            class="relative font-condensed text-regular-lg inline-block overflow-hidden z-10 after:content-[attr(data-label)] after:text-primary after:absolute after:top-0 after:left-0 after:w-full after:h-full after:translate-y-full after:transition-transform after:duration-300 group-hover:after:translate-y-0 text-white after:text-primary"><span
+                              class="relative inline-block transition-transform duration-300 group-hover:-translate-y-full">View
+                              Project</span></span></button></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="underground" class="absolute top-0 left-0 w-full h-full overflow-hidden"
+          style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+          <div class="absolute top-0 left-0 w-full h-full"
+            style="translate: none; rotate: none; scale: none; transform: translate(100%, 0%);">
+            <div data-scrollbar="true" tabindex="-1" style="overflow: hidden; outline: none;">
+              <div class="scroll-content">
+                <div class="container relative w-full h-auto pt-[var(--ratio,_0%)] flex items-center justify-center">
+                  <div
+                    class="relative max-w-[84rem] h-auto space-y-[2.4rem] text-center -translate-y-1/2 md:-translate-y-1/4"
+                    data-gsap-block="true">
+                    <div class="flex space-y-[2.4rem] flex-col">
+                      <h2 class="font-heading text-h2 md:text-h2-lg -my-[.1em] text-primary" data-gsap-headline="true"
+                        style="">
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            A Digital Designer and a Creative </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            Developer, in love with Digital Beauty </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            and Technology.</div>
+                        </div>
+                      </h2>
+                      <p class="font-condensed text-large md:text-large-lg overflow-hidden text-primary-light"><span
+                          class="block" data-gsap-subheadline="true"
+                          style="translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">Uprising™
+                          is a welded duo that partners with Agencies and Brands in their quest for unconventional paths
+                          by creating high-end projects that inspire the Digital Humus.</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="container relative w-full h-auto pt-[var(--ratio,_0%)] flex items-center justify-center">
+                  <div
+                    class="relative max-w-[84rem] h-auto space-y-[2.4rem] text-center -translate-y-1/2 md:-translate-y-1/4"
+                    data-gsap-block="true">
+                    <div class="flex space-y-[2.4rem] flex-col-reverse space-y-reverse">
+                      <h3 class="font-heading text-h2 md:text-h2-lg -my-[.1em] text-primary" data-gsap-headline="true"
+                        style="">
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            The Cannes Lions, The Webby </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            Awards, The One Show Awards, </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            Awwwards, and TheFWA.</div>
+                        </div>
+                      </h3>
+                      <p class="font-condensed text-large md:text-large-lg overflow-hidden text-primary-light"><span
+                          class="block" data-gsap-subheadline="true"
+                          style="translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">Our riot
+                          is silent, we move in the shadows. We spent over 15 years behind the scenes of great
+                          interactive experiences partnering with ambitious teams and global brands that earned us the
+                          most prestigious awards around the world.</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="container relative w-full h-auto pt-[var(--ratio,_0%)] flex items-center justify-center">
+                  <div
+                    class="relative max-w-[84rem] h-auto space-y-[2.4rem] text-center -translate-y-1/2 md:-translate-y-1/4"
+                    data-gsap-block="true">
+                    <div class="flex space-y-[2.4rem] flex-col">
+                      <h3 class="font-heading text-h2 md:text-h2-lg -my-[.1em] text-primary-light"
+                        data-gsap-headline="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            WebGL Projects, Product Websites, </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            Design Systems, UX/UI Design, 3D </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            Productions, and Headless CMS.</div>
+                        </div>
+                      </h3>
+                      <p class="font-condensed text-large md:text-large-lg overflow-hidden text-primary"><span
+                          class="block" data-gsap-subheadline="true"
+                          style="translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">Create.
+                          Together.</span></p>
+                    </div>
+                  </div>
+                </div>
+                <div class="container relative w-full h-auto pt-[var(--ratio,_0%)] flex items-center justify-center">
+                  <div
+                    class="relative max-w-[84rem] h-auto space-y-[2.4rem] text-center -translate-y-1/2 md:-translate-y-1/4"
+                    data-gsap-block="true">
+                    <div class="flex space-y-[2.4rem] flex-col-reverse space-y-reverse">
+                      <h3 class="font-heading text-h2 md:text-h2-lg -my-[.1em] text-primary-light"
+                        data-gsap-headline="true" style="">
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            Are you looking for a great idea or a </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            Creative Production partner to bring </div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            yours to life?</div>
+                        </div>
+                        <div class="line-wrap" style="display: block; text-align: center; position: relative;">
+                          <div class="line"
+                            style="display: block; text-align: center; position: relative; translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">
+                            Do Not Hesitate.</div>
+                        </div>
+                      </h3>
+                      <p class="font-condensed text-large md:text-large-lg overflow-hidden text-primary"><span
+                          class="block" data-gsap-subheadline="true"
+                          style="translate: none; rotate: none; scale: none; transform: translate(0%, 120%);">Based in
+                          Milan, available worldwide.</span></p>
+                    </div><a href="mailto:uprising@uprsg.com" data-gsap-button="true"
+                      class="relative inline-block w-full h-auto md:w-auto overflow-hidden transition-shadow duration-500 ease-out group bg-primary pt-[1.6rem] px-[2.4rem] pb-[1.2rem] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white before:z-0 before:transition-transform before:duration-300 before:ease-out before:translate-y-0 hover:before:-translate-y-full shadow-[0_0_40px_5px_rgba(255,255,255,.5)] hover:shadow-[0_0_40px_5px_rgba(228,103,103,.6)] md:!w-[12.2rem]"
+                      style="translate: none; rotate: none; scale: none; transform: translate(0px, 30px); opacity: 0;"><span
+                        data-label="Contact Us"
+                        class="relative font-condensed text-regular-lg inline-block overflow-hidden z-10 after:content-[attr(data-label)] after:text-primary after:absolute after:top-0 after:left-0 after:w-full after:h-full after:translate-y-full after:transition-transform after:duration-300 group-hover:after:translate-y-0 text-primary after:text-white"><span
+                          class="relative inline-block transition-transform duration-300 group-hover:-translate-y-full">Contact
+                          Us</span></span></a>
+                  </div>
+                </div>
+                <div class="container relative w-full h-full"></div>
+              </div>
+              <div class="scrollbar-track scrollbar-track-x show" style="display: none;">
+                <div class="scrollbar-thumb scrollbar-thumb-x"
+                  style="width: 1280px; transform: translate3d(0px, 0px, 0px);"></div>
+              </div>
+              <div class="scrollbar-track scrollbar-track-y show" style="display: block;">
+                <div class="scrollbar-thumb scrollbar-thumb-y"
+                  style="height: 124.255px; transform: translate3d(0px, 0px, 0px);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main> -->
+    <!-- <footer style="display:none" class="fixed left-0 bottom-0 w-full z-20">
+      <div class="container">
+        <div class="relative -translate-y-10 md:-translate-y-20">
+          <div class="absolute left-0 bottom-0">
+            <div class="flex flex-col items-start space-y-10 md:space-y-16 xl:space-y-20">
+              <div class="relative">
+                <div class="absolute bottom-0 left-0">
+                  <div class="relative">
+                    <div class="absolute -top-4 md:-top-6 left-0 right-0 h-[.2rem] bg-primary-dark overflow-hidden"
+                      data-gsap-root="true"
+                      style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">
+                      <div class="absolute top-0 left-0 w-full h-full bg-primary" data-gsap-line="true"
+                        style="translate: none; rotate: none; scale: none; transform-origin: 100% 50%; transform: translate(-99.2426%, 0%) translate3d(0px, 0px, 0px) scale(0.01416, 1);">
+                      </div>
+                    </div>
+                    <div class="overflow-hidden"><span
+                        class="font-condensed text-regular md:text-regular-lg text-secondary block whitespace-nowrap"
+                        data-gsap-label="true"
+                        style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Drag To
+                        Explore</span></div>
+                  </div>
+                </div>
+                <div class="absolute bottom-0 left-0">
+                  <div class="relative">
+                    <div
+                      class="absolute top-1/2 left-0 w-[.2rem] h-[3.2rem] md:h-[5.4rem] -translate-y-1/2 bg-primary overflow-hidden"
+                      data-gsap-root="true"
+                      style="translate: none; rotate: none; scale: none; transform: translate(0px, -27px) scale(1, 0);">
+                      <div class="absolute top-0 left-0 w-full h-full bg-white" data-gsap-line="true"
+                        style="translate: none; rotate: none; scale: none; transform-origin: 50% 0%; transform: translate(0%, 99.2426%) translate3d(0px, 0px, 0px) scale(1, 0.01416);">
+                      </div>
+                    </div>
+                    <div class="overflow-hidden hidden md:block"><span
+                        class="font-condensed text-regular md:text-regular-lg text-white block ml-6 md:ml-10 whitespace-nowrap"
+                        data-gsap-label="true"
+                        style="translate: none; rotate: none; scale: none; transform: translate(0%, 100%);">Scroll Down
+                        To Explore</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col md:flex-row-reverse items-baseline"><span
+                  class="flex space-x-3 md:space-x-4 overflow-hidden"><a
+                    href="https://www.weareuprising.com/pdf/privacy-policy.pdf" target="_blank"
+                    class="inline-flex text-primary" data-gsap-privacy="true"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"><span
+                      class="font-condensed text-small md:text-small-lg">Privacy Policy</span></a><a
+                    href="mailto:uprising@uprsg.com" target="_blank" class="inline-flex text-primary underline"
+                    data-gsap-email="true"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);"><span
+                      class="font-condensed text-small md:text-small-lg">uprising@uprsg.com</span></a></span>
+                <p class="font-condensed text-small md:text-small-lg text-secondary mr-3 md:mr-4 overflow-hidden"><span
+                    class="inline-block" data-gsap-colophon="true"
+                    style="translate: none; rotate: none; scale: none; transform: translate(0px, 0px);">Uprising SRL VAT
+                    03935440549</span></p>
+              </div>
+            </div>
+          </div>
+          <div class="absolute right-0 bottom-0"><button aria-label="toggle-audio"
+              class="relative w-[4.4rem] h-[4.4rem] translate-x-[2rem] translate-y-[1.4rem]"><svg width="24px"
+                height="24px" viewBox="0 0 10 10" class="stroke-1 stroke-white fill-none">
+                <polyline stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="11"
+                  data-gsap-audio-icon="true"
+                  points="1.00,5.65 2.14,6.73 3.29,6.96 4.43,6.24 5.57,4.91 6.71,3.62 7.86,3.01 9.00,3.37 "
+                  style="stroke-dashoffset: 0px;"></polyline>
+              </svg></button></div>
+        </div>
+      </div>
+    </footer> -->
+    <!-- <div
+      class="fixed top-[2rem] left-[2rem] bottom-[2rem] right-[2rem] bg-black/60 border-white/50 border-[.1rem] backdrop-blur-sm overflow-auto z-50 hidden">
+      <div class="relative p-8 flex flex-col space-y-12">
+        <div class="font-condensed flex flex-col space-y-4">
+          <h2 class="text-[2rem]">Performance Results</h2>
+          <ul class="flex flex-col space-y-6">
+            <li class="leading-[2.4rem]"><span class="text-primary">User Agent: </span><span class="">mozilla/5.0
+                (windows nt 10.0; win64; x64) applewebkit/537.36 (khtml, like gecko) chrome/148.0.0.0
+                safari/537.36</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">WebGL Version: </span><span class="">webgl 2.0
+                (opengl es 3.0 chromium)</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">GPU: </span><span class="">angle (intel, intel(r)
+                uhd graphics 620 (0x00003ea0) direct3d11 vs_5_0 ps_5_0, d3d11)</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">GPU Tier: </span><span class="">C [1]</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">System: </span><span class="">windows</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">Browser: </span><span class="">chrome</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">Mobile: </span><span class="">false</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">Language: </span><span class="">EN-US</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">DPR: </span><span class="">1.5</span></li>
+          </ul>
+        </div>
+        <div class="font-condensed flex flex-col space-y-4">
+          <h3 class="text-[2rem]">Project-Specific Tests</h3>
+          <ul class="flex flex-col space-y-6">
+            <li class="leading-[2.4rem]"><span class="text-primary">DPR: </span><span class="">1</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">Samples: </span><span class="">0</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">WebGL Version: </span><span class="">2</span></li>
+            <li class="leading-[2.4rem]"><span class="text-primary">Postprocessing: </span><span class="">all</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div> -->
+  </div>
+
+
+  <needle-editor-chrome
+    style="position: fixed; inset: 0px; z-index: 2147483647; pointer-events: none;"></needle-editor-chrome>
+</body>
+
+</html>

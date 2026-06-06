@@ -4,10 +4,14 @@ Command: npx gltfjsx@6.5.3 ./public/models/ufl-panels.glb --keepnames -o ./src/c
 */
 import {} from "tweakpane";
 import * as THREE from "three";
-import { type JSX } from "react";
-import { useGLTF } from "@react-three/drei";
-import { type GLTF } from "three-stdlib";
+import { useEffect, useRef, type JSX } from "react";
+import { useGLTF, useHelper } from "@react-three/drei";
+import { RectAreaLightHelper, RectAreaLightUniformsLib, type GLTF } from "three-stdlib";
 import { useControls } from "leva";
+import { Vector3 } from "three";
+
+RectAreaLightUniformsLib.init()
+
 
 type GLTFResult = GLTF & {
   nodes: {
@@ -23,11 +27,45 @@ type GLTFResult = GLTF & {
 };
 
 export function Panels(props: JSX.IntrinsicElements["group"]) {
-  const { nodes, materials } = useGLTF(
+  const { nodes } = useGLTF(
     "/models/ufl-panels.glb",
   ) as unknown as GLTFResult;
+
+  const groupRef = useRef<THREE.Group>(null);
+
+  const rectlightref = useRef(null);
+
+  const {intensity,power} = useControls({
+    intensity:{
+      value:15,
+      min:0,
+      max:50,
+      step:.1
+    },
+    power:{
+      value:30,
+      min:0,
+      max:500,
+      step:.1
+    },
+  })
+
+  // useHelper(rectlightref,RectAreaLightHelper,'yellow');
+
   return (
-    <group {...props} dispose={null}>
+    <group {...props} ref={groupRef} dispose={null}>
+      <rectAreaLight 
+        ref={rectlightref}
+        position={[0, .85 ,0]}
+        width={1}
+        height={2.5}
+        // color={'#ffffff'}
+        color={'#0e9cff'}
+        intensity={intensity}
+        power={power}
+
+        rotation={[0,Math.PI,0]}
+      />
       <mesh
         name="Ufl_Panel_Center"
         geometry={nodes.Ufl_Panel_Center.geometry}
@@ -58,15 +96,17 @@ function PanelMaterial() {
     "Panels",
     {
       color: {
-        value: "#f5f5f5",
+        // value: "#0e9cff",
+        value: "#ffffff",
       },
       emissive: {
-        value: "#a0e6ff",
+        // value: "#69d0ff",
+        value: "#ffffff",
       },
       emissiveIntensity: {
-        value: 1,
+        value: 50,
         min: 0,
-        max: 5,
+        max: 50,
         step: 0.1,
       },
     },
