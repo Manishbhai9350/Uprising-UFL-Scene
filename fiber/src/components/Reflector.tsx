@@ -8,18 +8,6 @@ export function Floor() {
 
   const RefMatRef = useRef(null);
 
-  useEffect(() => {
-    if (RefMatRef.current) {
-      console.log(RefMatRef.current)
-      // RefMatRef.current.onBeforeCompile((shader) => {
-      //   console.log(shader);
-      //   return shader;
-      // });
-    }
-
-    return () => {};
-  }, []);
-
   const { y } = useControls("Relector", {
     y: {
       min: -10,

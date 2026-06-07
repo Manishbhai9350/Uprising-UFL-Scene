@@ -5,7 +5,6 @@ import {
   ChromaticAberration,
   Noise,
   ToneMapping,
-  ColorAverage,
   LUT,
   HueSaturation,
 } from "@react-three/postprocessing";
@@ -13,7 +12,6 @@ import {
   BlendFunction,
   KernelSize,
   ToneMappingMode,
-  LUTEffect,
 } from "postprocessing";
 import { useControls } from "leva";
 import { useLoader } from "@react-three/fiber";
