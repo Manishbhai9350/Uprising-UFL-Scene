@@ -42,7 +42,7 @@ export function Ufl(props: JSX.IntrinsicElements["group"]) {
   const group = React.useRef<THREE.Group>(null);
   const { scene, animations } = useGLTF("/models/ufl.glb");
   const clone = React.useMemo(() => SkeletonUtils.clone(scene), [scene]);
-  const { nodes, materials } = useGraph(clone) as unknown as GLTFResult;
+  const { nodes } = useGraph(clone) as unknown as GLTFResult;
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -107,7 +107,7 @@ export function Ufl(props: JSX.IntrinsicElements["group"]) {
           geometry={nodes.ball.geometry}
           position={[-0.031, -0.289, 0.729]}
         >
-          <UflMaterial roughness={0.} />
+          <UflMaterial roughness={0.6} />
         </mesh>
         <mesh
           name="stand"
@@ -115,17 +115,18 @@ export function Ufl(props: JSX.IntrinsicElements["group"]) {
           position={[1.647, -0.38, 0]}
           scale={[1, 1, 0.6]}
         >
-          <UflMaterial roughness={1} />
+          <UflMaterial color={'#7a7a7a'} roughness={1} />
         </mesh>
       </group>
     </group>
   );
 }
 
-const UflMaterial = ({ roughness = 1 }: { roughness: number }) => {
+const UflMaterial = ({ roughness = 1, color = '' }: { roughness: number; color?: string; }) => {
   return (
     <meshStandardMaterial
-      color={0x000000}
+      // color={color || 0x000000}
+      color={'#858585'}
       emissive={0x000000}
       metalness={1}
       roughness={roughness}

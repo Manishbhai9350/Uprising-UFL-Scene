@@ -4,13 +4,11 @@ Command: npx gltfjsx@6.5.3 ./public/models/ufl-panels.glb --keepnames -o ./src/c
 */
 import {} from "tweakpane";
 import * as THREE from "three";
-import { useEffect, useRef, type JSX } from "react";
-import { useGLTF, useHelper } from "@react-three/drei";
-import { RectAreaLightHelper, RectAreaLightUniformsLib, type GLTF } from "three-stdlib";
+import { useRef, type JSX } from "react";
+import { useGLTF } from "@react-three/drei";
+import { type GLTF } from "three-stdlib";
 import { useControls } from "leva";
-import { Vector3 } from "three";
 
-RectAreaLightUniformsLib.init()
 
 
 type GLTFResult = GLTF & {
@@ -43,7 +41,7 @@ export function Panels(props: JSX.IntrinsicElements["group"]) {
       step:.1
     },
     power:{
-      value:30,
+      value:500,
       min:0,
       max:500,
       step:.1
@@ -59,7 +57,6 @@ export function Panels(props: JSX.IntrinsicElements["group"]) {
         position={[0, .85 ,0]}
         width={1}
         height={2.5}
-        // color={'#ffffff'}
         color={'#0e9cff'}
         intensity={intensity}
         power={power}
@@ -96,15 +93,15 @@ function PanelMaterial() {
     "Panels",
     {
       color: {
-        // value: "#0e9cff",
-        value: "#ffffff",
+        value: "#0e9cff",
+        // value: "#ffffff",
       },
       emissive: {
-        // value: "#69d0ff",
-        value: "#ffffff",
+        value: "#69d0ff",
+        // value: "#ffffff",
       },
       emissiveIntensity: {
-        value: 50,
+        value: 2,
         min: 0,
         max: 50,
         step: 0.1,
