@@ -1,12 +1,33 @@
 import { MeshReflectorMaterial, useTexture } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
 import { useControls } from "leva";
 import { useEffect, useMemo, useRef } from "react";
-import { NoColorSpace, RepeatWrapping } from "three";
+import {
+  Mesh,
+  MeshPhysicalMaterial,
+  NoColorSpace,
+  PlaneGeometry,
+  RepeatWrapping,
+} from "three";
 
 export function Floor() {
   const normalMapSource = useTexture("/textures/normal-map.jpg");
 
-  const RefMatRef = useRef(null);
+  const RefMatRef = useRef<MeshPhysicalMaterial | null>(
+    null,
+  );
+
+  const timeRef = useRef(0);
+
+  useFrame((_, delta) => {
+    timeRef.current += delta;
+    if (RefMatRef.current && RefMatRef.current.normalMap) {
+      RefMatRef.current.normalMap.offset.x =
+        0.2 * Math.cos(timeRef.current * 0.1);
+      RefMatRef.current.normalMap.offset.y =
+        0.1 * Math.sin(timeRef.current * 0.2);
+    }
+  });
 
   const { y } = useControls("Relector", {
     y: {
@@ -35,8 +56,8 @@ export function Floor() {
         mirror={0.98}
         mixBlur={0}
         resolution={1024}
-        normalMap={normalMap}
-        normalScale={[2, 2]}
+        // normalMap={normalMap}
+        // normalScale={[2, 2]}
         color="#ffffff"
         envMap={null}
         envMapIntensity={0}
@@ -44,6 +65,7 @@ export function Floor() {
         metalness={1}
         roughness={1}
         mixStrength={24}
+        distortionMap={normalMap}
         // mixStrength={1.5}
         // mixContrast={2}
         // mirror={0.92}

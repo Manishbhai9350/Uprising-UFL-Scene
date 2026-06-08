@@ -35,13 +35,13 @@ export function Panels(props: JSX.IntrinsicElements["group"]) {
 
   const {intensity,power} = useControls({
     intensity:{
-      value:15,
+      value:1.55,
       min:0,
       max:50,
       step:.1
     },
     power:{
-      value:500,
+      value:5.8,
       min:0,
       max:500,
       step:.1

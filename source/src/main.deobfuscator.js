@@ -34,7 +34,7 @@ import {
   i as Sv,
   C as Cv,
   k as Ev,
-} from "./fiber-suYchlKZ.js";
+} from "./fiber.js";
 import {
   r as u,
   _ as qn,
@@ -54,7 +54,7 @@ import {
   m as $v,
   j as wc,
   k as Av,
-} from "./react-ZVDsBwBb.js";
+} from "./react.js";
 import {
   u as kv,
   l as Gt,
@@ -63,8 +63,8 @@ import {
   a as Fv,
   b as Ov,
   d as jv,
-} from "./utils-4sL86zKL.js";
-import { c as us } from "./store-9Foi6fOs.js";
+} from "./utils.js";
+import { c as us } from "./store.js";
 import {
   a$ as Lv,
   m as Nv,
@@ -121,8 +121,8 @@ import {
   a7 as r1,
   ba as o1,
 } from "./three-H0uqkCM-.js";
-import { D as i1, G as s1, R as a1 } from "./three-stdlib-orAABGcX.js";
-import { g as le } from "./gsap-nk37oyWQ.js";
+import { D as i1, G as s1, R as a1 } from "./three-stdlib.js";
+import { g as le } from "./gsap.js";
 (function () {
   const e = document.createElement("link").relList;
   if (e && e.supports && e.supports("modulepreload")) return;

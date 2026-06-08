@@ -24,7 +24,7 @@ const SceneFBO = forwardRef<WebGLRenderTarget>((_, ref) => {
 
   const fbo = useMemo(
     () =>
-      new WebGLRenderTarget(512, 512, {
+      new WebGLRenderTarget(1024, 1024, {
         minFilter: LinearFilter,
         magFilter: LinearFilter,
         type: HalfFloatType,
