@@ -14485,7 +14485,7 @@ const ZS = () => {
     return m.jsx("div", {
       className: Xt(
         "fixed top-[2rem] left-[2rem] bottom-[2rem] right-[2rem] bg-black/60 border-white/50 border-[.1rem] backdrop-blur-sm overflow-auto z-50",
-        { hidden: !s  },
+        { hidden: !s },
       ),
       children: m.jsxs("div", {
         className: "relative p-8 flex flex-col space-y-12",
@@ -14913,7 +14913,7 @@ const ZS = () => {
       m.jsx("header", {
         ref: h,
         ...t,
-        className: Xt("fixed left-0 top-0 w-full z-20", { hidden: !s  }),
+        className: Xt("fixed left-0 top-0 w-full z-20", { hidden: !s }),
         children: m.jsx(go, {
           children: m.jsxs("div", {
             className:
@@ -16958,7 +16958,7 @@ const UC = u.forwardRef((t, e) => {
       m.jsx("footer", {
         ref: c,
         ...t,
-        className: Xt("fixed left-0 bottom-0 w-full z-20", { hidden: !s  }),
+        className: Xt("fixed left-0 bottom-0 w-full z-20", { hidden: !s }),
         children: m.jsx(go, {
           children: m.jsxs("div", {
             className: "relative -translate-y-10 md:-translate-y-20",
@@ -21738,7 +21738,7 @@ const DE = ni(
     vFluidUv = fluidUv;
     vUv = uv;
   }`,
-    /* glsl */`
+    /* glsl */ `
   uniform sampler2D tDiffuse;
   uniform vec2 uImage;
   uniform vec2 uResolution;
@@ -28458,7 +28458,7 @@ const Vo = /* glsl */ `
     gl_FragColor = vec4(div, 0.0, 0.0, 1.0);
   }
 `,
-  T3 =  /* glsl */`
+  T3 = /* glsl */ `
   precision mediump float;
   precision mediump sampler2D;
   varying highp vec2 vUv;
@@ -29613,7 +29613,7 @@ const qg = 0.01,
       m.jsx(eT, { ref: n, uuid: t, ...e })
     );
   },
-  nT = /* glsl */`
+  nT = /* glsl */ `
   attribute vec2 delayDuration;
   attribute vec3 startPosition;
   attribute vec3 controlPosition0;
@@ -29919,7 +29919,7 @@ const qg = 0.01,
     });
     return m.jsx(aT, { uuid: t, ...a, ...s });
   },
-  cT = /* glsl */  `
+  cT = /* glsl */ `
   #include <fog_pars_vertex>
 
   attribute vec3 translate;
@@ -30272,7 +30272,7 @@ const qg = 0.01,
     vUv = uv;
   }
 `,
-  gT =  /* glsl */ `
+  gT = /* glsl */ `
   #include <fog_pars_fragment>
 
   uniform sampler2D map;
@@ -31716,7 +31716,7 @@ const KT = ({ geometry: t, envMapRef: e, ...n }) => {
     gl_FragColor = texture2D( texture, uv );
   }
 `,
-  JT =  `
+  JT = `
   precision highp float;
 
   uniform sampler2D texturePosition;
@@ -32394,7 +32394,7 @@ class s4 extends vf {
       (n.uniforms.mouse = this._mouse),
       (n.uniforms.noise = this._noise),
       (n.uniforms.disp = this._disp),
-      (n.vertexShader = /* glsl */`
+      (n.vertexShader = /* glsl */ `
       attribute vec3 offset;
       attribute float indx;
 
@@ -32736,7 +32736,6 @@ class u4 extends vf {
         vec3 transformed = lookAtMatrix * position + translate;
       `,
       )),
-      
       (n.vertexShader = n.vertexShader.replace(
         "#include <project_vertex>",
         /* glsl */ `
@@ -32754,7 +32753,6 @@ class u4 extends vf {
       gl_Position = projectionMatrix * mvPosition;
       `,
       )));
-
   }
   get time() {
     return this._time.value;

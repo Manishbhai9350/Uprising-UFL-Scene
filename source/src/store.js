@@ -32,8 +32,7 @@ var G = {
   VITE_VERCEL_GIT_PROVIDER: "gitlab",
   VITE_VERCEL_GIT_COMMIT_REF: "develop",
   VITE_VERCEL_GIT_REPO_SLUG: "uprsg-site-v2",
-  VITE_VERCEL_GIT_COMMIT_MESSAGE: `reel button update
-`,
+  VITE_VERCEL_GIT_COMMIT_MESSAGE: `reel button update`,
   BASE_URL: "/",
   // MODE: "production",
   MODE: "development",
@@ -243,14 +242,16 @@ var O = {
   VITE_VERCEL_GIT_PROVIDER: "gitlab",
   VITE_VERCEL_GIT_COMMIT_REF: "develop",
   VITE_VERCEL_GIT_REPO_SLUG: "uprsg-site-v2",
-  VITE_VERCEL_GIT_COMMIT_MESSAGE: `reel button update
-`,
+  VITE_VERCEL_GIT_COMMIT_MESSAGE: `reel button update`,
   BASE_URL: "/",
   // MODE: "production",
   MODE: "development",
-  DEV: !1,
-  PROD: !0,
-  SSR: !1,
+  // DEV: !1,
+  // PROD: !0,
+  // SSR: !1,
+  DEV: 1,
+  PROD: 0,
+  SSR: 1,
 };
 const { useDebugValue: Q } = D,
   { useSyncExternalStoreWithSelector: Z } = K;
