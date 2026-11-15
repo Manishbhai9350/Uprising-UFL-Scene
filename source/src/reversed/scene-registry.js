@@ -10,12 +10,12 @@ function resolveReference(reference, settings) {
   return { ...resolved, ...reference.extend };
 }
 
-export function prepareHomepageConfiguration(rawConfig) {
+export function prepareSceneConfiguration(rawConfig, sceneId) {
   const sourceScene = rawConfig.scenes.find(
-    (scene) => scene.uuid === HOMEPAGE_SCENE_ID,
+    (scene) => scene.uuid === sceneId,
   );
   if (!sourceScene) {
-    throw new Error(`Missing configured scene "${HOMEPAGE_SCENE_ID}".`);
+    throw new Error(`Missing configured scene "${sceneId}".`);
   }
 
   return {
@@ -36,4 +36,8 @@ export function prepareHomepageConfiguration(rawConfig) {
       ),
     },
   };
+}
+
+export function prepareHomepageConfiguration(rawConfig) {
+  return prepareSceneConfiguration(rawConfig, HOMEPAGE_SCENE_ID);
 }

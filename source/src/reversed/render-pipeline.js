@@ -51,18 +51,17 @@ export function getRendererConfiguration({ isIosPhone, getDPR, getSamples }) {
   };
 }
 
-export function calculateDrawBufferSize(width, height, dpr = 1) {
-  let bufferWidth = width * dpr;
-  let bufferHeight = height * dpr;
-
-  if (bufferWidth * bufferHeight > MAX_DRAW_BUFFER_PIXELS) {
-    const aspectRatio = bufferWidth / bufferHeight;
-    bufferHeight = Math.sqrt(MAX_DRAW_BUFFER_PIXELS / aspectRatio);
-    bufferWidth = Math.ceil(bufferHeight * aspectRatio);
-    bufferHeight = Math.ceil(bufferHeight);
+export function calculateEffectiveDpr(width, height, dpr = 1) {
+  if (
+    !Number.isFinite(width) ||
+    !Number.isFinite(height) ||
+    width <= 0 ||
+    height <= 0
+  ) {
+    return dpr;
   }
 
-  return { width: bufferWidth, height: bufferHeight };
+  return Math.min(dpr, Math.sqrt(MAX_DRAW_BUFFER_PIXELS / (width * height)));
 }
 
 export function calculateCameraFov(viewportWidth, fov = DEFAULT_CAMERA.fov) {

@@ -1,8 +1,29 @@
 import { r as React } from "../react.js";
 import SharedCanvas from "./renderer.js";
-import { HomepageAssetLoader } from "./asset-loader.js";
+import {
+  AboutAssetLoader,
+  HomepageAssetLoader,
+  WatchAssetLoader,
+} from "./asset-loader.js";
+import AboutContent from "./about-content.js";
+
+function getRequestedScene() {
+  const requested = new URLSearchParams(window.location.search).get("scene");
+  if (requested === "about") return "about";
+  if (requested === "watch") return "watch";
+  if (window.location.pathname === "/about") return "about";
+  if (window.location.pathname === "/watch") return "watch";
+  return "homepage";
+}
 
 export default function Application() {
+  const sceneId = getRequestedScene();
+  const sceneLabel = sceneId === "about"
+    ? "About"
+    : sceneId === "watch"
+      ? "Watch"
+      : "Homepage";
+  const scrollProgress = React.useRef(0);
   const [loadState, setLoadState] = React.useState({
     progress: 0,
     loaded: false,
@@ -12,7 +33,12 @@ export default function Application() {
 
   React.useEffect(() => {
     let mounted = true;
-    const loader = new HomepageAssetLoader({
+    const Loader = sceneId === "about"
+      ? AboutAssetLoader
+      : sceneId === "watch"
+        ? WatchAssetLoader
+        : HomepageAssetLoader;
+    const loader = new Loader({
       onProgress: (progress) => {
         if (mounted) {
           setLoadState((state) => ({ ...state, progress }));
@@ -36,16 +62,26 @@ export default function Application() {
     return () => {
       mounted = false;
     };
-  }, []);
+  }, [sceneId]);
 
   return React.createElement(
     "main",
     {
       className: "uprising-app",
-      "aria-label": "Uprising homepage scene",
+      "aria-label": `Uprising ${sceneLabel.toLowerCase()} scene`,
       "aria-busy": String(!loadState.loaded && !loadState.error),
     },
-    React.createElement(SharedCanvas, { assets: loadState.assets }),
+    React.createElement(SharedCanvas, {
+      assets: loadState.assets,
+      sceneId,
+      scrollProgress,
+    }),
+    // sceneId === "about" &&
+    //   loadState.assets &&
+    //   React.createElement(AboutContent, {
+    //     configuration: loadState.assets.get("config"),
+    //     scrollProgress,
+    //   }),
     !loadState.loaded &&
       React.createElement(
         "p",
@@ -55,8 +91,8 @@ export default function Application() {
           "aria-live": "polite",
         },
         loadState.error
-          ? `Homepage assets failed to load: ${loadState.error.message}`
-          : `Loading homepage assets: ${Math.round(loadState.progress * 100)}%`,
+          ? `${sceneLabel} assets failed to load: ${loadState.error.message}`
+          : `Loading ${sceneLabel.toLowerCase()} assets: ${Math.round(loadState.progress * 100)}%`,
       ),
   );
 }

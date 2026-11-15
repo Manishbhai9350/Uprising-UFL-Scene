@@ -1,43 +1,53 @@
 import { r as React } from "../react.js";
 import { C as Canvas, u as useThree } from "../react-fiber.js";
 import { ba as WebGL1Renderer } from "../three.js";
+import { R as RectAreaLightUniformsLib } from "../three-stdlib.js";
 import {
-  calculateDrawBufferSize,
+  calculateEffectiveDpr,
   getDeviceCapabilities,
   getRendererConfiguration,
 } from "./render-pipeline.js";
 import SceneCamera from "./camera.js";
+import HomepageEffects from "./effects.js";
 import HomepageScene from "./homepage-scene.js";
+import WatchScene, { WatchCamera } from "./watch-scene.js";
+import AboutScene, { AboutCamera } from "./about-scene.js";
+
+RectAreaLightUniformsLib.init();
 
 const createElement = React.createElement;
 
 function ResizeHandler({ getDPR }) {
-  const getFiberState = useThree((state) => state.get);
+  const width = useThree((state) => state.size.width);
+  const height = useThree((state) => state.size.height);
+  const setDpr = useThree((state) => state.setDpr);
 
-  React.useEffect(() => {
-    function resizeDrawingBuffer() {
-      const state = getFiberState();
-      const { width, height } = calculateDrawBufferSize(
-        state.size.width,
-        state.size.height,
-        getDPR(),
-      );
-
-      state.setSize(width, height, false);
-    }
-
-    window.addEventListener("resize", resizeDrawingBuffer);
-    resizeDrawingBuffer();
-
-    return () => window.removeEventListener("resize", resizeDrawingBuffer);
-  }, [getFiberState, getDPR]);
+  React.useLayoutEffect(() => {
+    setDpr(calculateEffectiveDpr(width, height, getDPR()));
+  }, [width, height, getDPR, setDpr]);
 
   return null;
 }
 
-function CanvasContents({ assets }) {
+function CanvasContents({ assets, sceneId, scrollProgress }) {
   const capabilities = React.useMemo(() => getDeviceCapabilities(), []);
   const configuration = getRendererConfiguration(capabilities);
+  const intro = React.useMemo(() => ({ progress: 0 }), [assets]);
+  const isWatchScene = sceneId === "watch";
+  const isAboutScene = sceneId === "about";
+  const camera = createElement(
+    isWatchScene ? WatchCamera : isAboutScene ? AboutCamera : SceneCamera,
+    {
+      settings: assets?.get("config").settings.camera,
+      intro: isWatchScene ? undefined : intro,
+      scrollProgress,
+    },
+  );
+  const scene = isWatchScene
+    ? createElement(WatchScene, { assets })
+    : isAboutScene
+      ? createElement(AboutScene, { assets, scrollProgress })
+      : createElement(HomepageScene, { assets, intro });
   const gl = configuration.renderer.implementation === "WebGL1Renderer"
     ? (canvas) => new WebGL1Renderer({
         canvas,
@@ -71,14 +81,19 @@ function CanvasContents({ assets }) {
       args: [configuration.background],
     }),
     createElement(ResizeHandler, { getDPR: capabilities.getDPR }),
+    assets && camera,
+    assets && scene,
     assets &&
-      createElement(SceneCamera, {
-        settings: assets.get("config").settings.camera,
+      createElement(HomepageEffects, {
+        assets,
+        settings: assets.get("config").settings.effects,
+        isIosPhone: capabilities.isIosPhone,
+        multisampling: configuration.composerSamples,
+        sceneId,
       }),
-    assets && createElement(HomepageScene, { assets }),
   );
 }
 
-export default function SharedCanvas({ assets }) {
-  return createElement(CanvasContents, { assets });
+export default function SharedCanvas({ assets, sceneId, scrollProgress }) {
+  return createElement(CanvasContents, { assets, sceneId, scrollProgress });
 }

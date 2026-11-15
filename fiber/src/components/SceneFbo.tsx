@@ -12,7 +12,7 @@ import {
 } from "@react-three/drei";
 import { Floor } from "./Reflector";
 import { Ufl } from "./Ufl";
-import { Panels } from "./Panels";
+import { Panels } from "./Portal";
 
 const SceneFBO = forwardRef<WebGLRenderTarget>((_, ref) => {
   const { gl } = useThree();

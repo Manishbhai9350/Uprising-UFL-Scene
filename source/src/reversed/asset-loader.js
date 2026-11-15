@@ -6,14 +6,28 @@ import {
 } from "../three.js";
 import { L as LUTLoader } from "../react-fiber.js";
 import { D as DRACOLoader, G as GLTFLoader } from "../three-stdlib.js";
-import { ASSET_TYPES, HOMEPAGE_ASSETS } from "./asset-manifest.js";
-import { prepareHomepageConfiguration } from "./scene-registry.js";
+import {
+  ABOUT_ASSETS,
+  ASSET_TYPES,
+  HOMEPAGE_ASSETS,
+  WATCH_ASSETS,
+} from "./asset-manifest.js";
+import {
+  HOMEPAGE_SCENE_ID,
+  prepareSceneConfiguration,
+} from "./scene-registry.js";
 
 const DRACO_DECODER_PATH = "https://www.gstatic.com/draco/v1/decoders/";
 
-export class HomepageAssetLoader {
-  constructor({ onProgress } = {}) {
+export class SceneAssetLoader {
+  constructor({
+    onProgress,
+    manifest = HOMEPAGE_ASSETS,
+    sceneId = HOMEPAGE_SCENE_ID,
+  } = {}) {
     this.onProgress = onProgress;
+    this.manifest = manifest;
+    this.sceneId = sceneId;
     this.cache = new Map();
     this.manager = new LoadingManager();
     this.dracoLoader = new DRACOLoader();
@@ -40,7 +54,7 @@ export class HomepageAssetLoader {
       case ASSET_TYPES.LUT:
         return new LUTLoader(this.manager);
       default:
-        throw new Error(`Unsupported homepage asset type: ${asset.type}`);
+        throw new Error(`Unsupported scene asset type: ${asset.type}`);
     }
   }
 
@@ -60,12 +74,12 @@ export class HomepageAssetLoader {
             const rawConfig = JSON.parse(loaded);
             resolve([
               asset.name,
-              prepareHomepageConfiguration(rawConfig),
+              prepareSceneConfiguration(rawConfig, this.sceneId),
             ]);
           } catch (error) {
             reject(
               new Error(
-                `Could not prepare homepage configuration: ${error.message}`,
+                `Could not prepare scene configuration: ${error.message}`,
                 { cause: error },
               ),
             );
@@ -74,7 +88,7 @@ export class HomepageAssetLoader {
         undefined,
         (error) => {
           reject(
-            new Error(`Could not load homepage asset "${asset.name}".`, {
+            new Error(`Could not load scene asset "${asset.name}".`, {
               cause: error,
             }),
           );
@@ -85,11 +99,29 @@ export class HomepageAssetLoader {
 
   async load() {
     const loadedAssets = await Promise.all(
-      HOMEPAGE_ASSETS.map((asset) => this.loadAsset(asset)),
+      this.manifest.map((asset) => this.loadAsset(asset)),
     );
 
     this.cache = new Map(loadedAssets);
     this.onProgress?.(1);
     return this.cache;
+  }
+}
+
+export class HomepageAssetLoader extends SceneAssetLoader {
+  constructor(options = {}) {
+    super({ ...options, manifest: HOMEPAGE_ASSETS, sceneId: HOMEPAGE_SCENE_ID });
+  }
+}
+
+export class WatchAssetLoader extends SceneAssetLoader {
+  constructor(options = {}) {
+    super({ ...options, manifest: WATCH_ASSETS, sceneId: "doublepoint" });
+  }
+}
+
+export class AboutAssetLoader extends SceneAssetLoader {
+  constructor(options = {}) {
+    super({ ...options, manifest: ABOUT_ASSETS, sceneId: "underground" });
   }
 }

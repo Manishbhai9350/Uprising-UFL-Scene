@@ -671,7 +671,7 @@
         },
         {
           "type": "DoubleText",
-          "text1": "The Diva, the Divina: it’s La Callas! A name who does not need any introduction, and a story to be told in a new way.",
+          "text1": "The Diva, the Divina: it's La Callas! A name who does not need any introduction, and a story to be told in a new way.",
           "text2": "We presented Warner Classics a project featuring a contemporary retro style of illustration representing Maria Callas life.<br><br>We also experimented an audio visualizer that bring the voice of the soprano to a digital dimension where it can stay forever.",
           "rowstart": [2, 4]
         },
@@ -1061,7 +1061,7 @@
     "camera": {
       "fov": {
         "mobile": [55, 375],
-        "desktop": [40, 1440]
+        "desktop": [10, 1440]
       },
       "near": 0.01,
       "far": 10
@@ -1183,11 +1183,11 @@
         "adaptive": true
       },
       "colorCorrection": {
-        "hue": 0,
+        "hue": 0.0,
         "saturation": -0.05
       },
       "noise": {
-        "opacity": 0.5,
+        "opacity": 0.6,
         "premultiply": true
       },
       "lut": {

@@ -1,30 +1,39 @@
-# Homepage scene reconstruction
+# Isolated Uprising reconstruction
 
-This isolated preview reconstructs only the `uprising` homepage scene. It does
-not implement the site's routes or any other work scene. The original
-`src/main.js` and project configuration are read-only sources of truth.
+The preview keeps reconstructed scenes separate from the original site source.
+Serve the `source/` directory and open `src/reversed/` for the homepage,
+`src/reversed/?scene=watch` for the isolated Watch model, or
+`src/reversed/?scene=about` for the About/Underground scene.
 
-## Progress
+## Scope and status
 
-| Ordered stage | Status | Evidence |
+| Area | Status | Implementation |
 | --- | --- | --- |
-| Application initialization | Verified | `main.js` mounts the React application into the dedicated preview root. |
-| R3F Canvas and renderer | Verified | `renderer.js` preserves the original black background, renderer options, and draw-buffer resizing. |
-| Homepage asset loading | Verified | `asset-manifest.js` lists only the homepage model, ground plane, portal reference, environment, textures, LUT, and config. All listed file URLs returned HTTP 200 in the local preview. |
-| Homepage scene and original model | In progress | The `BaseModel` configuration resolves to the original `uprising/uprising.glb`; the model mesh and configured environment map are mounted. |
-| Camera, lighting, environment, ground, materials, animation, post-processing | Not implemented yet | These remain in the requested implementation order. |
-| Visual comparison | Not performed | No fidelity claim is made. |
+| Homepage | Verified | Configured `uprising` scene and original assets. |
+| Post-processing | Verified | Shared Fluid, RGB split, Bloom, Vignette, tone mapping, color correction, Noise, and LUT pipeline. |
+| Watch | Verified | Isolated `WatchModel`, its particle simulation, environment, camera response, and shared effects; the full Doublepoint scene is not mounted. |
+| About | Verified | Configured Underground model, textures, materials, reflector, area light, fog, Sparkles, four content blocks, CTA, and scroll-driven camera/fog motion. |
 
-The loader uses the original asset paths and Draco decoder URL. It resolves only
-the `uprising` scene from `data/config.json`; it does not register or mount
-other scenes. Loading and configuration errors are surfaced in the preview.
+About configuration and scene assets are loaded from the original project
+without changing them. The shared renderer selects only the requested preview
+scene; no Doublepoint, Planet Farms, or other work scenes are implemented.
 
-## Known gaps
+## Validation and known differences
 
-- The original camera rig and its intro, pointer, motion, and orientation updates
-  are not reconstructed yet.
-- The portal light, smoke, sparkles, fog, reflective ground, and post-processing
-  are not mounted yet.
-- Asset URL availability and model mounting have been checked, but rendered
-  geometry, interactions, and image fidelity have not yet been visually
-  compared with the original homepage.
+- The homepage, Watch, and About previews were loaded in the browser. The
+  required assets returned successfully, each scene mounted a WebGL canvas,
+  and no local browser-console or network errors were observed.
+- About scrolling was exercised and updated the 3D camera/fog while revealing
+  all four configured text blocks and the original contact email.
+- Original typography metrics, colors, content, and CTA link were compared
+  against the source website and configuration. The source's line-by-line
+  SplitText/ScrollTrigger animation is represented with CSS transitions and an
+  IntersectionObserver rather than reusing its bundled animation plugin.
+- This isolated preview does not include the website-wide navigation, footer,
+  audio controls, or portfolio-scene transitions. The local Matter font files
+  are absent, so the original `Matter` family falls back to the configured
+  system sans-serif stack.
+- Homepage device-orientation and scroll-driven camera responses remain
+  outside this phase.
+- No pixel-difference screenshot test has been performed. The original
+  `src/main.js`, configuration, and assets remain read-only.
