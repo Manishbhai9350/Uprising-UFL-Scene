@@ -18,4 +18,13 @@ export default defineConfig([
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
   },
+  {
+    files: ['src/engine/**/*.js', 'src/scenes/**/*.js'],
+    rules: {
+      // Three.js scene updates intentionally mutate refs and scene objects inside R3F callbacks.
+      'react-hooks/immutability': 'off',
+      'react-hooks/purity': 'off',
+      'react-hooks/refs': 'off',
+    },
+  },
 ])
