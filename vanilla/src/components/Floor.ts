@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { Reflector } from "three/examples/jsm/Addons.js";
+import { Pane } from "tweakpane";
 
 export function setupFloor(
   scene: THREE.Scene,
@@ -14,17 +15,24 @@ export function setupFloor(
   const geometry = new THREE.PlaneGeometry(10, 10);
   geometry.translate(0, -5, 0);
 
+  const params = {
+    normalScaleX: 2,
+    normalScaleY: 2,
+    color: "#ffffff",
+    animSpeed: 1.0,
+  };
+
   // 2. Create a Custom Reflector Shader incorporating the normal map & scale
   const CustomReflectorShader = {
     name: "CustomReflectorShader",
     uniforms: THREE.UniformsUtils.merge([
       {
-        color: { value: null },
+        color: { value: new THREE.Color(params.color) },
         tDiffuse: { value: null },
         textureMatrix: { value: null },
         tNormal: { value: null },
-        normalScale: { value: new THREE.Vector2(2, 2) }, // Controls normal intensity
-        uTime:{value:0}
+        normalScale: { value: new THREE.Vector2(params.normalScaleX, params.normalScaleY) },
+        uTime: { value: 0 },
       },
     ]),
     vertexShader: /* glsl */ `
@@ -78,12 +86,32 @@ export function setupFloor(
 
   scene.add(reflector);
 
-  // 4. Return an update function to animate the texture offset inside your requestAnimationFrame loop
+  // Add Tweakpane Integration
+  function addPane(pane: Pane) {
+    const folder = pane.addFolder({ title: "Floor", expanded:false });
+
+    folder.addBinding(params, "color").on("change", (ev) => {
+      reflector.material.uniforms.color.value.set(ev.value);
+    });
+
+    folder.addBinding(params, "normalScaleX", { min: 0, max: 10, step: 0.1 }).on("change", (ev) => {
+      reflector.material.uniforms.normalScale.value.x = ev.value;
+    });
+
+    folder.addBinding(params, "normalScaleY", { min: 0, max: 10, step: 0.1 }).on("change", (ev) => {
+      reflector.material.uniforms.normalScale.value.y = ev.value;
+    });
+
+    folder.addBinding(params, "animSpeed", { min: 0, max: 5, step: 0.1 });
+  }
+
+  // 4. Return update function and pane hook
   return {
     reflector,
     normalMap,
+    addPane,
     update: (delta: number) => {
-      reflector.material.uniforms.uTime.value += delta;
+      reflector.material.uniforms.uTime.value += delta * params.animSpeed;
     },
   };
 }

@@ -14,6 +14,7 @@ import {
   LookupTexture,
 } from "postprocessing";
 import { LUTCubeLoader } from "three-stdlib";
+import { Pane } from "tweakpane";
 
 export async function setupComposer(
   renderer: THREE.WebGLRenderer,
@@ -26,11 +27,25 @@ export async function setupComposer(
 
   composer.addPass(new RenderPass(scene, camera));
 
+  const bloomParams = {
+    intensity: 1.5,
+    luminanceThreshold: 0.76,
+  };
+
+  const grainParams = {
+    opacity: 0.6,
+  };
+
+  const hsParams = {
+    hue: 0,
+    saturation: -0.05,
+  };
+
   const bloomHalo = new BloomEffect({
     mipmapBlur: true,
-    luminanceThreshold: 0.76,
+    luminanceThreshold: bloomParams.luminanceThreshold,
     luminanceSmoothing: 0.86,
-    intensity: 1.5,
+    intensity: bloomParams.intensity,
     kernelSize: KernelSize.MEDIUM,
   });
 
@@ -44,36 +59,70 @@ export async function setupComposer(
     middleGrey: 0.4,
   });
 
-  const ColorCorrection = new HueSaturationEffect({
-    hue: 0,
-    saturation: -0.05,
+  const colorCorrection = new HueSaturationEffect({
+    hue: hsParams.hue,
+    saturation: hsParams.saturation,
   });
 
   const grain = new NoiseEffect({
     blendFunction: BlendFunction.ADD,
     premultiply: true,
   });
-  grain.blendMode.opacity.value = 0.6;
+  grain.blendMode.opacity.value = grainParams.opacity;
 
   const result = await new LUTCubeLoader().loadAsync("/textures/lut.cube");
-  
-  // Ensure it is properly formatted as a 3D LookupTexture
   const lutTexture = LookupTexture.from(result.texture3D || result.texture);
-
   const lutEffect = new LUT3DEffect(lutTexture);
 
   const effects = new EffectPass(
     camera,
     bloomHalo,
-    // vignette,
     toneMapping,
-    ColorCorrection,
+    colorCorrection,
     grain,
     lutEffect,
   );
 
   composer.addPass(effects);
 
-  // Add passes via EffectPass if needed, or manage via custom workflow
-  return { composer, bloomHalo, vignette, grain };
+  function addPane(pane: Pane) {
+    const folder = pane.addFolder({ title: "Postprocessing" });
+
+    const bloomFolder = folder.addFolder({ title: "Bloom",expanded:false });
+    bloomFolder
+      .addBinding(bloomParams, "intensity", { min: 0, max: 5, step: 0.1 })
+      .on("change", (ev) => {
+        bloomHalo.intensity = ev.value;
+      });
+    bloomFolder
+      .addBinding(bloomParams, "luminanceThreshold", {
+        min: 0,
+        max: 1,
+        step: 0.01,
+      })
+      .on("change", (ev) => {
+        bloomHalo.luminanceThreshold = ev.value;
+      });
+
+    const grainFolder = folder.addFolder({ title: "Film Grain",expanded:false });
+    grainFolder
+      .addBinding(grainParams, "opacity", { min: 0, max: 1, step: 0.05 })
+      .on("change", (ev) => {
+        grain.blendMode.opacity.value = ev.value;
+      });
+
+    const colorFolder = folder.addFolder({ title: "Color Correction",expanded:false });
+    colorFolder
+      .addBinding(hsParams, "hue", { min: -Math.PI, max: Math.PI, step: 0.01 })
+      .on("change", (ev) => {
+        colorCorrection.hue = ev.value;
+      });
+    colorFolder
+      .addBinding(hsParams, "saturation", { min: -1, max: 1, step: 0.01 })
+      .on("change", (ev) => {
+        colorCorrection.saturation = ev.value;
+      });
+  }
+
+  return { composer, bloomHalo, vignette, grain, addPane };
 }

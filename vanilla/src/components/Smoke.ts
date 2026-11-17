@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { Pane } from "tweakpane";
 
 const vertexShader = /* glsl */ `
 attribute vec3 translate;
@@ -66,8 +67,6 @@ void main() {
     vec3 transformPosition = translate + noise;
     vec3 transformRotation = rotation + vec3(0., 0., noise.z + s * direction);
     
-    // Scale is passed as a uniform vector3 or handled via attributes. 
-    // Here we scale X separately for width.
     mat4 transform = transformMatrix(
         transformPosition,
         transformRotation,
@@ -139,92 +138,94 @@ export function SetupSmoke(
     noise: 0.4,
     speed: 1.0,
     scale: 1.5,
-    widthMultiplier: 1.0, // <-- Exposed width multiplier (doubles width by default)
+    widthMultiplier: 1.4,
     opacity: 1,
     noiseIntensity: 0.1,
     color: "#009cd5",
+    active: true,
   };
 
-  // Generate Attribute Arrays
-  const translate: number[] = [];
-  const rotation: number[] = [];
-  const opacity: number[] = [];
-  const direction: number[] = [];
-  const noise: number[] = [];
-  const scale: number[] = [];
-  const speed: number[] = [];
-  const colors: number[] = [];
-  const colorObj = new THREE.Color(settings.color);
+  function createGeometryAndMesh() {
+    const translate: number[] = [];
+    const rotation: number[] = [];
+    const opacity: number[] = [];
+    const direction: number[] = [];
+    const noise: number[] = [];
+    const scaleArr: number[] = [];
+    const speedArr: number[] = [];
+    const colors: number[] = [];
+    const colorObj = new THREE.Color(settings.color);
 
-  for (let index = settings.count - 1; index >= 0; index -= 1) {
-    const side = index % 2;
-    translate.push(
-      settings.position.x +
-        (side === 0
-          ? -settings.offset.x * settings.radius
-          : settings.offset.x * settings.radius),
-      settings.position.y + randFloatSpread(settings.offset.y),
-      settings.position.z + randFloatSpread(settings.offset.z),
+    for (let index = settings.count - 1; index >= 0; index -= 1) {
+      const side = index % 2;
+      translate.push(
+        settings.position.x +
+          (side === 0
+            ? -settings.offset.x * settings.radius
+            : settings.offset.x * settings.radius),
+        settings.position.y + randFloatSpread(settings.offset.y),
+        settings.position.z + randFloatSpread(settings.offset.z),
+      );
+      rotation.push(0, 0, randFloat(-Math.PI, Math.PI));
+      noise.push(
+        randFloatSpread(settings.noise),
+        randFloatSpread(settings.noise),
+        randFloatSpread(settings.noise),
+      );
+      speedArr.push(settings.speed * randFloat(1, 2) * 0.25);
+      scaleArr.push(settings.scale * randFloat(1, 3));
+      opacity.push(settings.opacity * randFloat(0.5, 0.7));
+      direction.push(side === 0 ? 1 : -1);
+      colors.push(colorObj.r, colorObj.g, colorObj.b);
+    }
+
+    const geometry = new THREE.InstancedBufferGeometry();
+    const baseGeo = new THREE.PlaneGeometry(
+      1 * settings.widthMultiplier,
+      1,
+      1,
+      1,
     );
-    rotation.push(0, 0, randFloat(-Math.PI, Math.PI));
-    noise.push(
-      randFloatSpread(settings.noise),
-      randFloatSpread(settings.noise),
-      randFloatSpread(settings.noise),
+
+    geometry.index = baseGeo.index;
+    geometry.setAttribute("position", baseGeo.attributes.position);
+    geometry.setAttribute("uv", baseGeo.attributes.uv);
+
+    geometry.setAttribute(
+      "translate",
+      new THREE.InstancedBufferAttribute(new Float32Array(translate), 3),
     );
-    speed.push(settings.speed * randFloat(1, 2) * 0.25);
-    scale.push(settings.scale * randFloat(1, 3));
-    opacity.push(settings.opacity * randFloat(0.5, 0.7));
-    direction.push(side === 0 ? 1 : -1);
-    colors.push(colorObj.r, colorObj.g, colorObj.b);
+    geometry.setAttribute(
+      "rotation",
+      new THREE.InstancedBufferAttribute(new Float32Array(rotation), 3),
+    );
+    geometry.setAttribute(
+      "opacity",
+      new THREE.InstancedBufferAttribute(new Float32Array(opacity), 1),
+    );
+    geometry.setAttribute(
+      "direction",
+      new THREE.InstancedBufferAttribute(new Float32Array(direction), 1),
+    );
+    geometry.setAttribute(
+      "scale",
+      new THREE.InstancedBufferAttribute(new Float32Array(scaleArr), 1),
+    );
+    geometry.setAttribute(
+      "noise",
+      new THREE.InstancedBufferAttribute(new Float32Array(noise), 3),
+    );
+    geometry.setAttribute(
+      "speed",
+      new THREE.InstancedBufferAttribute(new Float32Array(speedArr), 1),
+    );
+    geometry.setAttribute(
+      "color",
+      new THREE.InstancedBufferAttribute(new Float32Array(colors), 3),
+    );
+
+    return geometry;
   }
-
-  const geometry = new THREE.InstancedBufferGeometry();
-
-  // Pass the width multiplier directly into the base plane geometry width parameter (default is 1, now multiplied)
-  const baseGeo = new THREE.PlaneGeometry(
-    1 * settings.widthMultiplier,
-    1,
-    1,
-    1,
-  );
-
-  geometry.index = baseGeo.index;
-  geometry.setAttribute("position", baseGeo.attributes.position);
-  geometry.setAttribute("uv", baseGeo.attributes.uv);
-
-  geometry.setAttribute(
-    "translate",
-    new THREE.InstancedBufferAttribute(new Float32Array(translate), 3),
-  );
-  geometry.setAttribute(
-    "rotation",
-    new THREE.InstancedBufferAttribute(new Float32Array(rotation), 3),
-  );
-  geometry.setAttribute(
-    "opacity",
-    new THREE.InstancedBufferAttribute(new Float32Array(opacity), 1),
-  );
-  geometry.setAttribute(
-    "direction",
-    new THREE.InstancedBufferAttribute(new Float32Array(direction), 1),
-  );
-  geometry.setAttribute(
-    "scale",
-    new THREE.InstancedBufferAttribute(new Float32Array(scale), 1),
-  );
-  geometry.setAttribute(
-    "noise",
-    new THREE.InstancedBufferAttribute(new Float32Array(noise), 3),
-  );
-  geometry.setAttribute(
-    "speed",
-    new THREE.InstancedBufferAttribute(new Float32Array(speed), 1),
-  );
-  geometry.setAttribute(
-    "color",
-    new THREE.InstancedBufferAttribute(new Float32Array(colors), 3),
-  );
 
   const material = new THREE.ShaderMaterial({
     vertexShader,
@@ -242,11 +243,58 @@ export function SetupSmoke(
     side: THREE.DoubleSide,
   });
 
-  const smokeMesh = new THREE.Mesh(geometry, material);
+  let geometry = createGeometryAndMesh();
+  let smokeMesh = new THREE.Mesh(geometry, material);
   const seed = Math.random() * 1000;
-  smokeMesh.userData = { active: true, seed };
+  smokeMesh.userData = { active: settings.active, seed };
 
   scene.add(smokeMesh);
+
+  function rebuildMesh() {
+    scene.remove(smokeMesh);
+    geometry.dispose();
+    geometry = createGeometryAndMesh();
+    smokeMesh = new THREE.Mesh(geometry, material);
+    smokeMesh.userData = { active: settings.active, seed };
+    scene.add(smokeMesh);
+  }
+
+  function addPane(pane: Pane) {
+    const folder = pane.addFolder({ title: "Smoke Particle System", expanded:false });
+
+    folder.addBinding(settings, "active").on("change", (ev) => {
+      smokeMesh.userData.active = ev.value;
+      smokeMesh.visible = ev.value;
+    });
+
+    folder
+      .addBinding(settings, "count", { min: 5, max: 150, step: 1 })
+      .on("change", () => {
+        rebuildMesh();
+      });
+
+    folder
+      .addBinding(settings, "speed", { min: 0.1, max: 5, step: 0.1 })
+      .on("change", () => {
+        rebuildMesh();
+      });
+
+    folder
+      .addBinding(settings, "scale", { min: 0.2, max: 5, step: 0.1 })
+      .on("change", () => {
+        rebuildMesh();
+      });
+
+    folder
+      .addBinding(settings, "noiseIntensity", { min: 0, max: 1, step: 0.01 })
+      .on("change", (ev) => {
+        material.uniforms.noiseIntensity.value = ev.value;
+      });
+
+    folder.addBinding(settings, "color").on("change", () => {
+      rebuildMesh();
+    });
+  }
 
   function Update(dt: number) {
     if (!smokeMesh.userData.active) return;
@@ -255,5 +303,5 @@ export function SetupSmoke(
     smokeMesh.lookAt(camera.position);
   }
 
-  return { Update, settings };
+  return { Update, settings, addPane };
 }

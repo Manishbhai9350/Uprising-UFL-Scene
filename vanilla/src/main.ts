@@ -2,7 +2,6 @@ import * as THREE from "three";
 import "./style.css";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { Pane } from "tweakpane";
-
 import { createRenderer, setupResize } from "./core/Renderer";
 import { setupLights } from "./components/Lights";
 import { setupFloor } from "./components/Floor";
@@ -28,22 +27,27 @@ const textureLoader = new THREE.TextureLoader(loadingManager);
 // Scene Components
 setupLights(scene);
 const Smoke = SetupSmoke(scene,textureLoader,clock, camera);
-const { reflector, normalMap, update:UpdateFloor } = setupFloor(scene, textureLoader);
+const { reflector, normalMap, update:UpdateFloor, addPane:FloorPane } = setupFloor(scene, textureLoader);
 
 
 let uflMixer: THREE.AnimationMixer | null = null;
-const { panelMaterial } = loadModels(scene, loadingManager, (mixer) => {
+const { panelMaterial, addPane:ModelPane } = loadModels(scene, loadingManager, (mixer) => {
   uflMixer = mixer;
 });
 
 
 
 // Postprocessing
-const { composer, bloomCore, grain } = await setupComposer(renderer, scene, camera);
+const { composer, bloomCore, grain, addPane: ComposerPane } = await setupComposer(renderer, scene, camera);
 
 // Tweakpane UI Setup (Optional Debugging)
 const pane = new Pane();
-pane.hidden = true; // Toggle as needed
+
+ComposerPane(pane)
+FloorPane(pane)
+ModelPane(pane)
+Smoke.addPane(pane)
+
 
 // Animation Loop
 let lastTime = clock.getElapsedTime();
