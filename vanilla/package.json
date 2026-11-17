@@ -17,6 +17,7 @@
     "@tweakpane/core": "^2.0.5",
     "postprocessing": "^6.39.1",
     "three": "^0.184.0",
+    "three-stdlib": "^2.36.1",
     "tweakpane": "^4.0.5"
   }
 }
