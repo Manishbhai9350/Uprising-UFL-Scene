@@ -5,27 +5,85 @@ export function setupFloor(
   scene: THREE.Scene,
   textureLoader: THREE.TextureLoader,
 ) {
+  // 1. Load and configure the normal map texture
   const normalMap = textureLoader.load("/textures/normal-map.jpg");
   normalMap.colorSpace = THREE.NoColorSpace;
   normalMap.wrapS = normalMap.wrapT = THREE.RepeatWrapping;
-  normalMap.repeat.set(2, 2);
+  normalMap.repeat.set(1, 1);
 
   const geometry = new THREE.PlaneGeometry(10, 10);
-
-  // Shift geometry up by +5 so the bottom edge sits at the pivot point
   geometry.translate(0, -5, 0);
 
+  // 2. Create a Custom Reflector Shader incorporating the normal map & scale
+  const CustomReflectorShader = {
+    name: "CustomReflectorShader",
+    uniforms: THREE.UniformsUtils.merge([
+      {
+        color: { value: null },
+        tDiffuse: { value: null },
+        textureMatrix: { value: null },
+        tNormal: { value: null },
+        normalScale: { value: new THREE.Vector2(2, 2) }, // Controls normal intensity
+        uTime:{value:0}
+      },
+    ]),
+    vertexShader: /* glsl */ `
+      uniform mat4 textureMatrix;
+      varying vec4 vUvReflection;
+      varying vec2 vUv;
+
+      void main() {
+        vUv = uv;
+        vUvReflection = textureMatrix * vec4(position, 1.0);
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      }
+    `,
+    fragmentShader: /* glsl */ `
+      uniform vec3 color;
+      uniform sampler2D tDiffuse;
+      uniform sampler2D tNormal;
+      uniform vec2 normalScale;
+      uniform float uTime;
+
+      varying vec4 vUvReflection;
+      varying vec2 vUv;
+
+      void main() {
+        // Sample normal map and convert from [0, 1] range to [-1, 1]
+        vec4 normalColor = texture2D(tNormal, vUv * .2 + vec2(uTime * .0026));
+        vec2 perturbation = (normalize(normalColor.rb) - .5) * normalScale;
+
+        // Perturb the projection coordinates to create surface ripples/details
+        vec4 perturbedUv = vUvReflection + vec4(perturbation, 0.0, 0.0);
+
+        vec4 base = texture2DProj(tDiffuse, perturbedUv);
+        gl_FragColor = vec4((base.rgb * color) * .6, 1.0);
+      }
+    `,
+  };
+
+  // 3. Initialize the Reflector with the custom shader
   const reflector = new Reflector(geometry, {
     color: "#ffffff",
+    textureWidth: window.innerWidth * window.devicePixelRatio,
+    textureHeight: window.innerHeight * window.devicePixelRatio,
+    shader: CustomReflectorShader,
   });
 
-  // Now position the pivot directly at the world origin edge (z = 0)
-  reflector.position.set(0, -0.4, 0);
+  // Assign the normal map texture to the custom uniform
+  reflector.material.uniforms.tNormal.value = normalMap;
 
-  // Lay it flat (-Math.PI / 2) and tilt it slightly (e.g., -0.1 or +0.1)
-  reflector.rotation.x = -Math.PI / 2 + 0.1 * 0;
+  reflector.position.set(0, -0.4, 0);
+  reflector.rotation.x = -Math.PI / 2;
 
   scene.add(reflector);
 
-  return { reflector, normalMap };
+  // 4. Return an update function to animate the texture offset inside your requestAnimationFrame loop
+  return {
+    reflector,
+    normalMap,
+    update: (delta: number) => {
+      reflector.material.uniforms.uTime.value += delta;
+    },
+  };
 }

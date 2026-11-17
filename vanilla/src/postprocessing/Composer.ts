@@ -30,7 +30,7 @@ export async function setupComposer(
     mipmapBlur: true,
     luminanceThreshold: 0.76,
     luminanceSmoothing: 0.86,
-    intensity: 1.8,
+    intensity: 1.5,
     kernelSize: KernelSize.MEDIUM,
   });
 
@@ -65,7 +65,7 @@ export async function setupComposer(
   const effects = new EffectPass(
     camera,
     bloomHalo,
-    vignette,
+    // vignette,
     toneMapping,
     ColorCorrection,
     grain,

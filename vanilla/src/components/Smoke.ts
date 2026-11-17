@@ -65,12 +65,16 @@ void main() {
     float s = time * speed * .2;
     vec3 transformPosition = translate + noise;
     vec3 transformRotation = rotation + vec3(0., 0., noise.z + s * direction);
+    
+    // Scale is passed as a uniform vector3 or handled via attributes. 
+    // Here we scale X separately for width.
     mat4 transform = transformMatrix(
         transformPosition,
         transformRotation,
         vec3(scale * .5)
     );
-    vec4 mvPosition = modelViewMatrix * transform * vec4(position, 1.0);
+    vec3 pos = position;
+    vec4 mvPosition = modelViewMatrix * transform * vec4(pos, 1.0);
 
     gl_Position = projectionMatrix * mvPosition;
 
@@ -103,11 +107,8 @@ void main() {
     uv += (-1. + noise * 2.) * noiseIntensity;
 
     vec4 texel = texture2D(map, uv);
-    // Cap maximum opacity to 0.4
     float finalOpacity = min(vOpacity, 0.3);
     gl_FragColor = texel * vec4(vColor, 1.) * finalOpacity;
-
-    // gl_FragColor = vec4(1.0,0.0,0.0,1.0);
 }
 `;
 
@@ -120,10 +121,10 @@ function randFloat(min: number, max: number) {
 }
 
 export function SetupSmoke(
-    scene: THREE.Scene, 
-    tLoader: THREE.TextureLoader,
-    clock: THREE.Clock,
-    camera: THREE.PerspectiveCamera,
+  scene: THREE.Scene,
+  tLoader: THREE.TextureLoader,
+  clock: THREE.Clock,
+  camera: THREE.PerspectiveCamera,
 ) {
   const map = tLoader.load("/textures/smoke.jpg");
   const noiseMap = tLoader.load("/textures/noise.png", (t) => {
@@ -133,15 +134,15 @@ export function SetupSmoke(
   const settings = {
     count: 40,
     position: new THREE.Vector3(0, 0, 0),
-    offset: new THREE.Vector3(.7, 2, 0.1),
-    radius: .5,
+    offset: new THREE.Vector3(0.7, 2, 0.1),
+    radius: 0.5,
     noise: 0.4,
     speed: 1.0,
     scale: 1.5,
+    widthMultiplier: 1.0, // <-- Exposed width multiplier (doubles width by default)
     opacity: 1,
     noiseIntensity: 0.1,
     color: "#009cd5",
-    // color: "#d50055",
   };
 
   // Generate Attribute Arrays
@@ -172,14 +173,21 @@ export function SetupSmoke(
       randFloatSpread(settings.noise),
     );
     speed.push(settings.speed * randFloat(1, 2) * 0.25);
-    scale.push(settings.scale * randFloat(3, 1));
-    opacity.push(settings.opacity * randFloat(0.5, 1));
+    scale.push(settings.scale * randFloat(1, 3));
+    opacity.push(settings.opacity * randFloat(0.5, 0.7));
     direction.push(side === 0 ? 1 : -1);
     colors.push(colorObj.r, colorObj.g, colorObj.b);
   }
 
   const geometry = new THREE.InstancedBufferGeometry();
-  const baseGeo = new THREE.PlaneGeometry(1, 1, 1, 1);
+
+  // Pass the width multiplier directly into the base plane geometry width parameter (default is 1, now multiplied)
+  const baseGeo = new THREE.PlaneGeometry(
+    1 * settings.widthMultiplier,
+    1,
+    1,
+    1,
+  );
 
   geometry.index = baseGeo.index;
   geometry.setAttribute("position", baseGeo.attributes.position);
@@ -240,14 +248,12 @@ export function SetupSmoke(
 
   scene.add(smokeMesh);
 
-  function Update(
-    dt: number
-  ) {
+  function Update(dt: number) {
     if (!smokeMesh.userData.active) return;
     material.uniforms.time.value =
       smokeMesh.userData.seed + clock.getElapsedTime();
     smokeMesh.lookAt(camera.position);
   }
 
-  return { Update };
+  return { Update, settings };
 }

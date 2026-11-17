@@ -28,7 +28,7 @@ const textureLoader = new THREE.TextureLoader(loadingManager);
 // Scene Components
 setupLights(scene);
 const Smoke = SetupSmoke(scene,textureLoader,clock, camera);
-const { reflector, normalMap } = setupFloor(scene, textureLoader);
+const { reflector, normalMap, update:UpdateFloor } = setupFloor(scene, textureLoader);
 
 
 let uflMixer: THREE.AnimationMixer | null = null;
@@ -58,6 +58,7 @@ function animate() {
   }
 
   Smoke.Update(deltaTime);
+  UpdateFloor(deltaTime)
 
   composer.render(deltaTime);
   requestAnimationFrame(animate);
