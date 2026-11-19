@@ -8,11 +8,13 @@ import { setupFloor } from "./components/Floor";
 import { loadModels } from "./components/Models";
 import { setupComposer } from "./postprocessing/Composer";
 import { SetupSmoke } from "./components/Smoke";
+import { SetupSparkles } from "./components/Sparkle";
 
 // Setup Canvas & Core
 const canvas = document.querySelector("canvas")!;
 const { renderer, camera } = createRenderer(canvas);
 const scene = new THREE.Scene();
+scene.background = new THREE.Color("black")
 setupResize(camera, renderer);
 
 const clock = new THREE.Clock();
@@ -29,6 +31,8 @@ setupLights(scene);
 const Smoke = SetupSmoke(scene,textureLoader,clock, camera);
 const { reflector, normalMap, update:UpdateFloor, addPane:FloorPane } = setupFloor(scene, textureLoader);
 
+const Sparkles = SetupSparkles(scene,textureLoader,camera,canvas)
+
 
 let uflMixer: THREE.AnimationMixer | null = null;
 const { panelMaterial, addPane:ModelPane } = loadModels(scene, loadingManager, (mixer) => {
@@ -38,10 +42,12 @@ const { panelMaterial, addPane:ModelPane } = loadModels(scene, loadingManager, (
 
 
 // Postprocessing
-const { composer, bloomCore, grain, addPane: ComposerPane } = await setupComposer(renderer, scene, camera);
+const { composer,addPane: ComposerPane } = await setupComposer(renderer, scene, camera);
 
 // Tweakpane UI Setup (Optional Debugging)
 const pane = new Pane();
+
+pane.hidden = true;
 
 ComposerPane(pane)
 FloorPane(pane)
@@ -61,9 +67,11 @@ function animate() {
     uflMixer.update(deltaTime);
   }
 
+  Sparkles.Update(deltaTime);
   Smoke.Update(deltaTime);
   UpdateFloor(deltaTime)
 
+  // renderer.render(scene,camera)
   composer.render(deltaTime);
   requestAnimationFrame(animate);
 }

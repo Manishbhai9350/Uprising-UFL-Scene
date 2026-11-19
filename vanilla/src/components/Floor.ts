@@ -16,8 +16,8 @@ export function setupFloor(
   geometry.translate(0, -5, 0);
 
   const params = {
-    normalScaleX: 2,
-    normalScaleY: 2,
+    normalScaleX: 5,
+    normalScaleY: 5,
     color: "#ffffff",
     animSpeed: 1.0,
   };
@@ -58,7 +58,7 @@ export function setupFloor(
 
       void main() {
         // Sample normal map and convert from [0, 1] range to [-1, 1]
-        vec4 normalColor = texture2D(tNormal, vUv * .2 + vec2(uTime * .0026));
+        vec4 normalColor = texture2D(tNormal, vUv * .2 + vec2(uTime * .003));
         vec2 perturbation = (normalize(normalColor.rb) - .5) * normalScale;
 
         // Perturb the projection coordinates to create surface ripples/details

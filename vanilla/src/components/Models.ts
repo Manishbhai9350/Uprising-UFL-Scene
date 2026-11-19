@@ -28,7 +28,7 @@ export function loadModels(
   const panelMaterial = new THREE.MeshStandardMaterial({
     color: panelParams.color,
     emissive: panelParams.emissive,
-    emissiveIntensity: panelParams.emissiveIntensity,
+    emissiveIntensity: panelParams.emissiveIntensity * 1.25,
     toneMapped: false,
   });
 

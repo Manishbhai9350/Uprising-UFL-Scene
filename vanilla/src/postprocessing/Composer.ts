@@ -38,7 +38,7 @@ export async function setupComposer(
 
   const hsParams = {
     hue: 0,
-    saturation: -0.05,
+    saturation: -0.1,
   };
 
   const bloomHalo = new BloomEffect({

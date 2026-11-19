@@ -164,7 +164,7 @@ export function SetupSmoke(
             ? -settings.offset.x * settings.radius
             : settings.offset.x * settings.radius),
         settings.position.y + randFloatSpread(settings.offset.y),
-        settings.position.z + randFloatSpread(settings.offset.z),
+        settings.position.z + randFloatSpread(settings.offset.z) - .2,
       );
       rotation.push(0, 0, randFloat(-Math.PI, Math.PI));
       noise.push(
